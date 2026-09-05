@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vinext/
+.next/
+.wrangler/
+.vercel/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+benchmark-results.json
+data/raw/
+data/processed/

@@ -1,0 +1,9623 @@
+{
+  "metadata": {
+    "match_id": "J03WMX",
+    "title": "1. FC Köln:FC Bayern München",
+    "score": "1:2",
+    "season": "2022/2023",
+    "matchday": "34",
+    "kickoff": "2023-05-27T13:30:00.000+00:00",
+    "teams": [
+      "1. FC Köln",
+      "FC Bayern München"
+    ]
+  },
+  "provenance": {
+    "source": "DFL / IDSSE",
+    "license": "CC BY 4.0",
+    "doi": "10.1038/s41597-025-04505-y",
+    "computed": true,
+    "source_hz": 25,
+    "analysis_hz": 5,
+    "sampled_frames": 29194,
+    "live_frames": 17071,
+    "coverage": 1.0
+  },
+  "zone_values": [
+    0.0007413127453920364,
+    0.0006620112462116141,
+    0.0014640608091737461,
+    0.0020468427313790455,
+    0.0024090513775181714,
+    0.003170021241611262,
+    0.004528688151657492,
+    0.009289604763988388,
+    0.01245745424886629,
+    0.027446342849505187,
+    0.09548648680280797,
+    0.045412687627503986
+  ],
+  "players": [
+    {
+      "id": "DFL-OBJ-0002DR",
+      "name": "Y. Sommer",
+      "number": 27,
+      "role": "TW",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 97.3,
+      "action": -0.005,
+      "spatial": 0.2459,
+      "zones": [
+        0.0379,
+        0.04944,
+        0.07936,
+        0.01609,
+        0.03012,
+        0.02917,
+        0.00068,
+        0.00099,
+        0.00183,
+        7e-05,
+        8e-05,
+        0.00018
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0000RP",
+      "name": "E. Choupo-Moting",
+      "number": 13,
+      "role": "STZ",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 25.0,
+      "action": 0.488,
+      "spatial": 2.5089,
+      "zones": [
+        0.00024,
+        0.00035,
+        0.00187,
+        0.01174,
+        0.01872,
+        0.01375,
+        0.11177,
+        0.21961,
+        0.13422,
+        0.56477,
+        1.01352,
+        0.41836
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0000IA",
+      "name": "T. Müller",
+      "number": 25,
+      "role": "ZO",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 63.7,
+      "action": 0.9421,
+      "spatial": 1.8742,
+      "zones": [
+        0.0014,
+        0.0009,
+        0.00297,
+        0.01501,
+        0.01982,
+        0.02157,
+        0.06333,
+        0.10454,
+        0.14567,
+        0.30133,
+        0.69058,
+        0.50711
+      ]
+    },
+    {
+      "id": "DFL-OBJ-000191",
+      "name": "Leon Goretzka",
+      "number": 8,
+      "role": "DML",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 13.9,
+      "action": 0.0,
+      "spatial": 0.5443,
+      "zones": [
+        0.0009,
+        0.00127,
+        0.00307,
+        0.00428,
+        0.01607,
+        0.01696,
+        0.01394,
+        0.0614,
+        0.09991,
+        0.03282,
+        0.16533,
+        0.12838
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0027G6",
+      "name": "Serge Gnabry",
+      "number": 7,
+      "role": "STZ",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 97.3,
+      "action": 0.5193,
+      "spatial": 2.7446,
+      "zones": [
+        0.00074,
+        0.00069,
+        0.00327,
+        0.00852,
+        0.0219,
+        0.04125,
+        0.04054,
+        0.16625,
+        0.30445,
+        0.19813,
+        1.00748,
+        0.95142
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0002F5",
+      "name": "Joshua Kimmich",
+      "number": 6,
+      "role": "DMR",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 97.3,
+      "action": -0.0349,
+      "spatial": 0.449,
+      "zones": [
+        0.00308,
+        0.00235,
+        0.00474,
+        0.01385,
+        0.01989,
+        0.01618,
+        0.02598,
+        0.06526,
+        0.05721,
+        0.05687,
+        0.10217,
+        0.08138
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0026PM",
+      "name": "Kingsley Coman",
+      "number": 11,
+      "role": "OLM",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 72.3,
+      "action": 0.0779,
+      "spatial": 2.5552,
+      "zones": [
+        0.00191,
+        0.00099,
+        0.00718,
+        0.02195,
+        0.01422,
+        0.05299,
+        0.04569,
+        0.11075,
+        0.45805,
+        0.13795,
+        0.49569,
+        1.2078
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0002AU",
+      "name": "Leroy Sané",
+      "number": 10,
+      "role": "ORM",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 97.3,
+      "action": 1.6408,
+      "spatial": 2.4609,
+      "zones": [
+        0.00305,
+        0.00108,
+        0.0007,
+        0.04278,
+        0.02302,
+        0.00702,
+        0.19645,
+        0.14962,
+        0.04185,
+        1.06008,
+        0.80745,
+        0.12783
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J015S4",
+      "name": "Joao Cancelo",
+      "number": 22,
+      "role": "DLM",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 33.6,
+      "action": -0.121,
+      "spatial": 1.2139,
+      "zones": [
+        0.00045,
+        0.00349,
+        0.02989,
+        0.00173,
+        0.03235,
+        0.13604,
+        0.0028,
+        0.09211,
+        0.42439,
+        0.00633,
+        0.12108,
+        0.36325
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0027KL",
+      "name": "Dayot Upamecano",
+      "number": 2,
+      "role": "IVR",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 97.3,
+      "action": -0.0187,
+      "spatial": 0.2901,
+      "zones": [
+        0.01043,
+        0.00434,
+        0.00527,
+        0.03338,
+        0.0352,
+        0.01659,
+        0.0192,
+        0.04413,
+        0.01886,
+        0.02325,
+        0.06214,
+        0.01736
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0027G0",
+      "name": "Benjamin Pavard",
+      "number": 5,
+      "role": "RV",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 97.3,
+      "action": -0.0212,
+      "spatial": 0.4282,
+      "zones": [
+        0.01734,
+        0.00408,
+        0.0011,
+        0.07981,
+        0.02195,
+        0.00209,
+        0.07679,
+        0.05849,
+        0.00435,
+        0.06553,
+        0.08338,
+        0.01327
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J017RE",
+      "name": "M. de Ligt",
+      "number": 4,
+      "role": "IVL",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 97.3,
+      "action": 0.5949,
+      "spatial": 0.3737,
+      "zones": [
+        0.00258,
+        0.00478,
+        0.0218,
+        0.01191,
+        0.03965,
+        0.05793,
+        0.00713,
+        0.03584,
+        0.07513,
+        0.02779,
+        0.06303,
+        0.02612
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J01APO",
+      "name": "N. Mazraoui",
+      "number": 40,
+      "role": "LV",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 86.2,
+      "action": -0.0745,
+      "spatial": 0.9406,
+      "zones": [
+        0.00266,
+        0.00241,
+        0.02071,
+        0.01925,
+        0.02676,
+        0.09822,
+        0.05529,
+        0.06979,
+        0.20649,
+        0.12231,
+        0.12648,
+        0.19023
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J01B8N",
+      "name": "Ryan Gravenberch",
+      "number": 38,
+      "role": "DML",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 72.3,
+      "action": -0.004,
+      "spatial": 0.6782,
+      "zones": [
+        0.00107,
+        0.00173,
+        0.00798,
+        0.00682,
+        0.02162,
+        0.02718,
+        0.01536,
+        0.08569,
+        0.10633,
+        0.04715,
+        0.20186,
+        0.15546
+      ]
+    },
+    {
+      "id": "DFL-OBJ-002GCR",
+      "name": "J. Musiala",
+      "number": 42,
+      "role": "ZO",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 11.1,
+      "action": 2.5661,
+      "spatial": 0.8718,
+      "zones": [
+        0.00218,
+        0.00148,
+        0.00541,
+        0.01914,
+        0.02312,
+        0.01528,
+        0.03673,
+        0.06481,
+        0.04766,
+        0.10009,
+        0.35602,
+        0.19986
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J01N65",
+      "name": "Mathys Tel",
+      "number": 39,
+      "role": "STL",
+      "team_id": "DFL-CLU-00000G",
+      "team_name": "FC Bayern München",
+      "team_index": 1,
+      "minutes": 11.1,
+      "action": 0.0,
+      "spatial": 4.0998,
+      "zones": [
+        0.00021,
+        0.00042,
+        0.00112,
+        0.00882,
+        0.02212,
+        0.04697,
+        0.06437,
+        0.26947,
+        0.6266,
+        0.46266,
+        1.42722,
+        1.16981
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0027AX",
+      "name": "F. Kainz",
+      "number": 11,
+      "role": "ZO",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 63.5,
+      "action": 0.6042,
+      "spatial": 1.625,
+      "zones": [
+        0.00081,
+        0.00052,
+        0.00157,
+        0.00886,
+        0.02167,
+        0.01889,
+        0.0316,
+        0.11708,
+        0.14743,
+        0.18101,
+        0.61263,
+        0.48296
+      ]
+    },
+    {
+      "id": "DFL-OBJ-00012X",
+      "name": "Jonas Hector",
+      "number": 14,
+      "role": "LV",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 97.3,
+      "action": 0.1303,
+      "spatial": 1.3518,
+      "zones": [
+        0.00058,
+        0.00277,
+        0.02489,
+        0.00245,
+        0.01796,
+        0.1013,
+        0.00996,
+        0.09592,
+        0.32797,
+        0.08045,
+        0.34916,
+        0.33838
+      ]
+    },
+    {
+      "id": "DFL-OBJ-000270",
+      "name": "D. Selke",
+      "number": 27,
+      "role": "STZ",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 63.5,
+      "action": 1.4216,
+      "spatial": 3.2602,
+      "zones": [
+        0.00037,
+        0.00021,
+        0.00049,
+        0.01491,
+        0.01351,
+        0.01061,
+        0.09102,
+        0.2159,
+        0.1733,
+        0.458,
+        1.57047,
+        0.71144
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0002HE",
+      "name": "M. Schwäbe",
+      "number": 20,
+      "role": "TW",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 97.3,
+      "action": -0.0032,
+      "spatial": 0.321,
+      "zones": [
+        0.04708,
+        0.05552,
+        0.09206,
+        0.02569,
+        0.0419,
+        0.04112,
+        0.00279,
+        0.00507,
+        0.00921,
+        0.00015,
+        0.00016,
+        0.00026
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0002BO",
+      "name": "B. Schmitz",
+      "number": 2,
+      "role": "RV",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 63.6,
+      "action": -0.0899,
+      "spatial": 0.8471,
+      "zones": [
+        0.01738,
+        0.00189,
+        0.0013,
+        0.11299,
+        0.02607,
+        0.00487,
+        0.15086,
+        0.07162,
+        0.02387,
+        0.31489,
+        0.11037,
+        0.01101
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0027V2",
+      "name": "K. Schindler",
+      "number": 17,
+      "role": "RV",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 33.8,
+      "action": -0.0054,
+      "spatial": 0.8199,
+      "zones": [
+        0.01301,
+        0.00358,
+        0.00165,
+        0.0908,
+        0.03311,
+        0.00326,
+        0.15827,
+        0.06324,
+        0.01065,
+        0.33061,
+        0.1026,
+        0.00915
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0027B6",
+      "name": "Timo Hübers",
+      "number": 4,
+      "role": "IVR",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 97.3,
+      "action": -0.0079,
+      "spatial": 0.3283,
+      "zones": [
+        0.01079,
+        0.00426,
+        0.00482,
+        0.04009,
+        0.03941,
+        0.01335,
+        0.04668,
+        0.04645,
+        0.01287,
+        0.02161,
+        0.06624,
+        0.02172
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0026ZI",
+      "name": "Kristian Pedersen",
+      "number": 3,
+      "role": "LV",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 13.8,
+      "action": -0.3661,
+      "spatial": 0.8714,
+      "zones": [
+        0.0004,
+        0.00162,
+        0.0301,
+        0.00094,
+        0.01676,
+        0.1293,
+        0.00101,
+        0.04359,
+        0.34849,
+        0.00232,
+        0.03133,
+        0.26554
+      ]
+    },
+    {
+      "id": "DFL-OBJ-0028BD",
+      "name": "L. Maina",
+      "number": 37,
+      "role": "OLM",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 83.6,
+      "action": -0.0048,
+      "spatial": 2.8989,
+      "zones": [
+        0.00043,
+        0.00075,
+        0.00589,
+        0.00275,
+        0.02062,
+        0.0654,
+        0.01188,
+        0.10836,
+        0.47809,
+        0.04919,
+        0.74038,
+        1.41516
+      ]
+    },
+    {
+      "id": "DFL-OBJ-002GBW",
+      "name": "T. Lemperle",
+      "number": 25,
+      "role": "STZ",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 13.8,
+      "action": -0.3788,
+      "spatial": 3.5699,
+      "zones": [
+        0.0003,
+        0.00018,
+        0.00047,
+        0.00835,
+        0.01913,
+        0.03225,
+        0.04719,
+        0.18856,
+        0.36641,
+        0.26776,
+        1.39489,
+        1.24436
+      ]
+    },
+    {
+      "id": "DFL-OBJ-002G89",
+      "name": "Jan Thielmann",
+      "number": 29,
+      "role": "STZ",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 33.8,
+      "action": -0.0495,
+      "spatial": 2.4286,
+      "zones": [
+        0.00029,
+        0.00046,
+        0.0033,
+        0.00648,
+        0.01334,
+        0.02444,
+        0.0436,
+        0.14463,
+        0.27748,
+        0.23205,
+        0.88704,
+        0.79551
+      ]
+    },
+    {
+      "id": "DFL-OBJ-002G4A",
+      "name": "Ellyes Skhiri",
+      "number": 28,
+      "role": "DML",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 97.3,
+      "action": 0.7737,
+      "spatial": 0.5552,
+      "zones": [
+        0.00221,
+        0.00165,
+        0.0045,
+        0.0109,
+        0.01916,
+        0.01976,
+        0.02505,
+        0.07231,
+        0.06501,
+        0.05628,
+        0.18401,
+        0.09438
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J01BGM",
+      "name": "D. Ljubicic",
+      "number": 7,
+      "role": "ORM",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 83.5,
+      "action": 0.6421,
+      "spatial": 1.5919,
+      "zones": [
+        0.00223,
+        0.00064,
+        0.00136,
+        0.02797,
+        0.01977,
+        0.00584,
+        0.11316,
+        0.11982,
+        0.03872,
+        0.53608,
+        0.61977,
+        0.10653
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J01D1W",
+      "name": "Jeff Chabot",
+      "number": 24,
+      "role": "IVL",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 97.3,
+      "action": -0.0099,
+      "spatial": 0.3997,
+      "zones": [
+        0.00208,
+        0.00397,
+        0.02074,
+        0.00802,
+        0.03731,
+        0.07172,
+        0.00977,
+        0.06256,
+        0.0765,
+        0.0099,
+        0.06697,
+        0.03015
+      ]
+    },
+    {
+      "id": "DFL-OBJ-J01DVC",
+      "name": "D. Huseinbašić",
+      "number": 8,
+      "role": "ZO",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 33.7,
+      "action": -0.0182,
+      "spatial": 1.6264,
+      "zones": [
+        0.00175,
+        0.001,
+        0.00237,
+        0.01669,
+        0.02079,
+        0.01295,
+        0.07515,
+        0.148,
+        0.06003,
+        0.38534,
+        0.70995,
+        0.19236
+      ]
+    },
+    {
+      "id": "DFL-OBJ-002GKO",
+      "name": "E. Martel",
+      "number": 6,
+      "role": "DMR",
+      "team_id": "DFL-CLU-000008",
+      "team_name": "1. FC Köln",
+      "team_index": 0,
+      "minutes": 97.3,
+      "action": 0.0182,
+      "spatial": 0.7952,
+      "zones": [
+        0.00162,
+        0.00123,
+        0.00376,
+        0.01042,
+        0.01808,
+        0.01431,
+        0.02987,
+        0.07179,
+        0.05376,
+        0.15255,
+        0.30379,
+        0.13397
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 0,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 0,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": -0.0048,
+      "minute": 0,
+      "from": 7,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 0,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": -0.0004,
+      "minute": 1,
+      "from": 4,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 0,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 1,
+      "from": 3,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 1,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Shot",
+      "value": 0.4132,
+      "minute": 1,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 1,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": -0.0454,
+      "minute": 2,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0004,
+      "minute": 2,
+      "from": 3,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 2,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0093,
+      "minute": 3,
+      "from": 5,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 3,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 3,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 3,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 4,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 4,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 4,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 4,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 4,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 4,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 4,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 4,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0454,
+      "minute": 4,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": -0.0008,
+      "minute": 5,
+      "from": 5,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 5,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 5,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 6,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 6,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0069,
+      "minute": 6,
+      "from": 4,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 6,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 6,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 6,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 7,
+      "from": 0,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 7,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0009,
+      "minute": 7,
+      "from": 2,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 7,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0361,
+      "minute": 7,
+      "from": 7,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 7,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 7,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 7,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 7,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0072,
+      "minute": 7,
+      "from": 3,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Shot",
+      "value": 0.1277,
+      "minute": 7,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 8,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 8,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 8,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 8,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 8,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 8,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": -0.0008,
+      "minute": 9,
+      "from": 2,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 9,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 9,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": -0.0454,
+      "minute": 9,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 9,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 9,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0009,
+      "minute": 10,
+      "from": 2,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0004,
+      "minute": 10,
+      "from": 3,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0093,
+      "minute": 10,
+      "from": 5,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 10,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0017,
+      "minute": 11,
+      "from": 1,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 8,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 11,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 11,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Shot",
+      "value": 0.4888,
+      "minute": 12,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 12,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 12,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 12,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 12,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 12,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0001,
+      "minute": 12,
+      "from": 0,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0025,
+      "minute": 13,
+      "from": 1,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 13,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 13,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 13,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 13,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 13,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 13,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 13,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 13,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 13,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 13,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 13,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 14,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0229,
+      "minute": 14,
+      "from": 6,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 15,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 15,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 15,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 15,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 15,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 15,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 15,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 16,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0093,
+      "minute": 16,
+      "from": 5,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.033,
+      "minute": 16,
+      "from": 8,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.033,
+      "minute": 16,
+      "from": 8,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Shot",
+      "value": 0.3437,
+      "minute": 16,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 17,
+      "from": 8,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 17,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 17,
+      "from": 3,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 17,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 10,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Shot",
+      "value": 0.7134,
+      "minute": 18,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 18,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 18,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 19,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0454,
+      "minute": 19,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 19,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 19,
+      "from": 8,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 14,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 20,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 20,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0093,
+      "minute": 20,
+      "from": 5,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 21,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 15,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Shot",
+      "value": 0.1842,
+      "minute": 22,
+      "from": 9,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 16,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 23,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 24,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 24,
+      "from": 10,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0008,
+      "minute": 25,
+      "from": 4,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 25,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 25,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 25,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 26,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 26,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 26,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 26,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 26,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 26,
+      "from": 10,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.0955,
+      "minute": 26,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Shot",
+      "value": 0.0883,
+      "minute": 26,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 26,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 27,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 27,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 27,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 27,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 28,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 28,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 28,
+      "from": 4,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 29,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 22,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 29,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 29,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Shot",
+      "value": 0.4781,
+      "minute": 30,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 31,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 31,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 31,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 31,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 31,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 31,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 31,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 31,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 31,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 32,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 32,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": -0.0454,
+      "minute": 32,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 32,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 32,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 32,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 32,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 33,
+      "from": 8,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 33,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 33,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 34,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 34,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 34,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 34,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 34,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 34,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 34,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0008,
+      "minute": 35,
+      "from": 4,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": -0.0013,
+      "minute": 35,
+      "from": 3,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0017,
+      "minute": 35,
+      "from": 2,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": -0.0004,
+      "minute": 35,
+      "from": 4,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 35,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 35,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0013,
+      "minute": 36,
+      "from": 0,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 36,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 30,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0001,
+      "minute": 37,
+      "from": 0,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 37,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 37,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 37,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 31,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 31,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0048,
+      "minute": 38,
+      "from": 6,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 38,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 39,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 39,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.033,
+      "minute": 39,
+      "from": 8,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 40,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 40,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 40,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 40,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 40,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 40,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 40,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 40,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 40,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 40,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 41,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 41,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 41,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 41,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 41,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 41,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 41,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 41,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0069,
+      "minute": 41,
+      "from": 4,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 41,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 42,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0072,
+      "minute": 42,
+      "from": 3,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 42,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Shot",
+      "value": 0.4379,
+      "minute": 43,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 43,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 44,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 46,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 45,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 45,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 45,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 45,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 45,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 45,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 45,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 45,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 45,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 45,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 45,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 46,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 46,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 46,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 46,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 46,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 46,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 46,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 46,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 47,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0254,
+      "minute": 47,
+      "from": 3,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.033,
+      "minute": 47,
+      "from": 8,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 47,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 47,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": -0.0013,
+      "minute": 48,
+      "from": 3,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 48,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 48,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0004,
+      "minute": 48,
+      "from": 3,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0229,
+      "minute": 49,
+      "from": 6,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 49,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 49,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 50,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 51,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 51,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 51,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 51,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 52,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 52,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 52,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0361,
+      "minute": 53,
+      "from": 7,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0454,
+      "minute": 53,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 53,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 53,
+      "from": 8,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 53,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 53,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 54,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": -0.0008,
+      "minute": 54,
+      "from": 5,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 54,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 55,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 55,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 55,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Shot",
+      "value": 0.1422,
+      "minute": 55,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 55,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 55,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 56,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 56,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 56,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 56,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 56,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 56,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": -0.0021,
+      "minute": 57,
+      "from": 6,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000IA",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Shot",
+      "value": 0.8365,
+      "minute": 57,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 57,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 57,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": -0.0008,
+      "minute": 57,
+      "from": 5,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": 0.0229,
+      "minute": 58,
+      "from": 6,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027AX",
+      "type": "Pass",
+      "value": -0.0229,
+      "minute": 58,
+      "from": 9,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 58,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 58,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 58,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 58,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 58,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 58,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 58,
+      "from": 7,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-000270",
+      "type": "Shot",
+      "value": 0.5746,
+      "minute": 59,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 59,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 59,
+      "from": 10,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": 0.0014,
+      "minute": 60,
+      "from": 1,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 60,
+      "from": 3,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 60,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 60,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 60,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 60,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 60,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 60,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002BO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 60,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 61,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 61,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026PM",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 62,
+      "from": 4,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01B8N",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 62,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 62,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 63,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 63,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 63,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 64,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": -0.0015,
+      "minute": 65,
+      "from": 2,
+      "to": 2,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 65,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 66,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 66,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 66,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 66,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G89",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 66,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 66,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 66,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01DVC",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 66,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 67,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0862,
+      "minute": 67,
+      "from": 7,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 67,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 66,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0862,
+      "minute": 68,
+      "from": 10,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 68,
+      "from": 8,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.0048,
+      "minute": 68,
+      "from": 7,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Shot",
+      "value": 0.0216,
+      "minute": 69,
+      "from": 6,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Shot",
+      "value": 0.6488,
+      "minute": 69,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 70,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Shot",
+      "value": 0.6603,
+      "minute": 68,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 70,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G89",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 70,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 71,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000191",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000191",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0017,
+      "minute": 71,
+      "from": 2,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 68,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G89",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 71,
+      "from": 10,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 71,
+      "from": 9,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 68,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 72,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 72,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": -0.0008,
+      "minute": 72,
+      "from": 5,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0025,
+      "minute": 73,
+      "from": 3,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 68,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G89",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 73,
+      "from": 10,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Shot",
+      "value": 0.8413,
+      "minute": 73,
+      "from": 10,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 73,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 73,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Shot",
+      "value": 0.0241,
+      "minute": 74,
+      "from": 6,
+      "to": 9,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 74,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 74,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 74,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 74,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 74,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 74,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01DVC",
+      "type": "Pass",
+      "value": 0.0025,
+      "minute": 74,
+      "from": 3,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 74,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 74,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 75,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 75,
+      "from": 1,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0032,
+      "minute": 75,
+      "from": 7,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 75,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 75,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 75,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 75,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 76,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 76,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027V2",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 76,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 76,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Shot",
+      "value": 0.1631,
+      "minute": 76,
+      "from": 11,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 76,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 76,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 76,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 76,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 77,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 77,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 77,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 77,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G89",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 77,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 77,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 77,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 77,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 77,
+      "from": 8,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01DVC",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 78,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0028BD",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 78,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01BGM",
+      "type": "Shot",
+      "value": 0.1474,
+      "minute": 80,
+      "from": 11,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000191",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 81,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 73,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01APO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 73,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0004,
+      "minute": 82,
+      "from": 3,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 82,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 82,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0001,
+      "minute": 82,
+      "from": 0,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0017,
+      "minute": 82,
+      "from": 1,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-000191",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 82,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 82,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 83,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 83,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 83,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 83,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 83,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0004,
+      "minute": 83,
+      "from": 4,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 83,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 83,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 83,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 83,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 84,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 84,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 85,
+      "from": 0,
+      "to": 0,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 85,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GBW",
+      "type": "Pass",
+      "value": -0.0454,
+      "minute": 85,
+      "from": 11,
+      "to": 11,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01DVC",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 86,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 86,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 1,
+      "to": 1,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 87,
+      "from": 0,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 87,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Shot",
+      "value": 0.1095,
+      "minute": 87,
+      "from": 9,
+      "to": 10,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 88,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 88,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 88,
+      "from": 11,
+      "to": 11,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GCR",
+      "type": "Shot",
+      "value": 0.3169,
+      "minute": 88,
+      "from": 10,
+      "to": 10,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 89,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G4A",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 89,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 89,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 90,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 90,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J017RE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 90,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GCR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 90,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002DR",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 90,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J015S4",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 90,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 90,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G89",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 90,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 90,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 90,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GCR",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002G89",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 91,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027B6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 91,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-J01D1W",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 91,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 91,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 91,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G6",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 91,
+      "from": 4,
+      "to": 4,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0002AU",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 91,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.0024,
+      "minute": 91,
+      "from": 4,
+      "to": 4,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 91,
+      "from": 0,
+      "to": 0,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GBW",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 91,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 92,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": -0.002,
+      "minute": 92,
+      "from": 3,
+      "to": 3,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 92,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 92,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 92,
+      "from": 5,
+      "to": 5,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027KL",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 84,
+      "from": 3,
+      "to": 3,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 92,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 93,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002F5",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 93,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": -0.0125,
+      "minute": 85,
+      "from": 8,
+      "to": 8,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 93,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Pass",
+      "value": -0.0274,
+      "minute": 93,
+      "from": 9,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": -0.0045,
+      "minute": 94,
+      "from": 6,
+      "to": 6,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 94,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 85,
+      "from": 8,
+      "to": 8,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0027G0",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 94,
+      "from": 6,
+      "to": 6,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0026ZI",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 94,
+      "from": 2,
+      "to": 2,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-00012X",
+      "type": "Pass",
+      "value": -0.0032,
+      "minute": 94,
+      "from": 5,
+      "to": 5,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-0002HE",
+      "type": "Pass",
+      "value": -0.0007,
+      "minute": 95,
+      "from": 1,
+      "to": 1,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-J01DVC",
+      "type": "Pass",
+      "value": -0.0093,
+      "minute": 86,
+      "from": 7,
+      "to": 7,
+      "detail": "Unsuccessful"
+    },
+    {
+      "player": "DFL-OBJ-002GKO",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 91,
+      "from": 7,
+      "to": 7,
+      "detail": "Successful"
+    },
+    {
+      "player": "DFL-OBJ-0000RP",
+      "type": "Pass",
+      "value": 0.0,
+      "minute": 94,
+      "from": 9,
+      "to": 9,
+      "detail": "Successful"
+    }
+  ]
+}
