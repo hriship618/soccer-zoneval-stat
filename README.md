@@ -32,15 +32,9 @@ python scripts/generate_demo.py
 python scripts/benchmark.py --frames 10 50 100
 ```
 
-CUDA is optional because development machines may not have an NVIDIA GPU. On CUDA 12, install `.[cuda]`; the benchmark automatically measures the GPU path when available and records `null` otherwise. Results written by `scripts/benchmark.py` are measurements from the machine that ran it, never estimates.
-
 ## Metric convention
 
 For successful passes and carries, value is `V(destination) - V(origin)`. Failed actions lose the origin value. Shots use a small logistic xG model. Same-zone take-ons use avoided possession-loss risk. Defensive regains receive the opponent threat prevented. For every tracking frame, a player's spatial value is the zone-value-weighted loss in their team's pitch control when that player is removed. Match totals are normalized per 90 minutes.
-
-## Scope
-
-This is an internship/research portfolio prototype, not a validated production scouting metric. Its novelty is the unified attribution layer and visible decomposition. Credible next steps are stability tests across sampling rates and grid resolutions, ablations against action-only models, and out-of-sample prediction of possession and shot outcomes.
 
 ## Data attribution
 
