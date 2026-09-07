@@ -10,7 +10,6 @@ Zonal Counterfactual Player Value is a research prototype for soccer player valu
 - exact leave-one-out attribution without materializing 22 extra control surfaces
 - CUDA kernel that reduces directly into player × zone aggregates
 - official DFL/IDSSE XML ingestion with synchronized event and tracking data
-- deterministic synthetic tracking generator, honest CPU/GPU benchmark harness, and tests
 - responsive dashboard with match ranking, player detail, timeline, spatial heatmap, comparison, and methodology views
 
 The dashboard shows the real 1. FC Köln 1–2 FC Bayern München match from May 27, 2023. Player names, minutes, event actions, and tracking samples come from the DFL/IDSSE open-data release (CC BY 4.0). ZCPV values are this project's research-prototype outputs, not official DFL ratings. The 12-zone action model is calibrated across all seven downloaded release matches; only the Bayern match is shown in the interface.
@@ -25,11 +24,8 @@ npm run dev
 ## Run the analytics engine
 
 ```bash
-python -m pip install -e .[test]
-python -m pytest
+python -m pip install -e .
 python scripts/crunch_dfl.py --match J03WMX
-python scripts/generate_demo.py
-python scripts/benchmark.py --frames 10 50 100
 ```
 
 ## Metric convention

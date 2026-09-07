@@ -17,8 +17,3 @@ zcpv = ["cuda/*.cu"]
 
 [project.optional-dependencies]
 cuda = ["cupy-cuda12x>=13.0"]
-test = ["pytest>=8.0"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["."]

@@ -16,6 +16,3 @@ export const players: Player[] = realMatch.players.map(p => ({
 
 export const actions = realMatch.actions.map(a => ({...a, detail:a.detail ?? `${a.type} from zone ${a.from + 1} to ${a.to + 1}`}));
 export const zoneNames = ['Own L','Own C','Own R','Def-mid L','Def-mid C','Def-mid R','Att-mid L','Att-mid C','Att-mid R','Final L','Final C','Final R'];
-export const benchmarks = [
-  { frames:5, naive:.02399, optimized:.00835 }, { frames:15, naive:.06954, optimized:.01613 }, { frames:30, naive:.11542, optimized:.02428 },
-];
