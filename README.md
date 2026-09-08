@@ -28,6 +28,16 @@ python -m pip install -e .
 python scripts/crunch_dfl.py --match J03WMX
 ```
 
+## Recorded performance
+
+Recorded on the real Köln–Bayern match (17,071 live tracking frames at 5 Hz; 32 × 21 pitch-control grid) using an AMD Ryzen 9 5900X 12-Core Processor and an NVIDIA GeForce RTX 3080.
+
+| Path | Time | Speedup |
+| --- | ---: | ---: |
+| CPU naive | 47.32 s | 1.0× |
+| CPU optimized | 6.45 s | 7.3× |
+| CUDA (RTX 3080) | 47.5 ms | 135.7× vs. optimized CPU; ~1000× vs. naive |
+
 ## Metric convention
 
 For successful passes and carries, value is `V(destination) - V(origin)`. Failed actions lose the origin value. Shots use a small logistic xG model. Same-zone take-ons use avoided possession-loss risk. Defensive regains receive the opponent threat prevented. For every tracking frame, a player's spatial value is the zone-value-weighted loss in their team's pitch control when that player is removed. Match totals are normalized per 90 minutes.
