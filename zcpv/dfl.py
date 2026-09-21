@@ -130,8 +130,8 @@ def learn_zone_values(event_paths: list[Path]) -> np.ndarray:
                 destination = int(grid.index(row['to_x'], row['to_y'])); transitions[origin, destination] += 1
             elif row['kind'] == 'pass':
                 turnovers[origin] += 1
-    # Weak empirical prior avoids zero-value zones in a seven-match sample.
-    shots += np.linspace(1, 4, 12); goals += np.linspace(.01, .35, 12)
+    # Fit only from observed events. Sparse zones may legitimately receive zero
+    # value; larger event-data priors should be learned and validated separately.
     return fit_zone_values(transitions, shots, goals, turnovers=turnovers)
 
 

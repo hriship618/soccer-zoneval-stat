@@ -8,6 +8,7 @@ dist/
 __pycache__/
 .pytest_cache/
 *.egg-info/
+*.tsbuildinfo
 benchmark-results.json
 data/raw/
 data/processed/

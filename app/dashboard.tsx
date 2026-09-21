@@ -1,121 +1,170 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { Activity, Cpu, Info, Radio, ScanLine, Timer } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { ArrowDownRight, ArrowRight, CircleGauge, FlaskConical, Layers3, MousePointer2, ShieldCheck } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { actions, match, players, provenance, zoneNames, type Player } from './data';
+import { actions, match, players, provenance, zoneNames, type MatchAction, type Player } from './data';
+import modelReport from './model-report.generated';
 
-declare global {
-  interface Document { modelContext?: { registerTool: (tool: Record<string, unknown>, options?: { signal?: AbortSignal }) => void | Promise<void> } }
-}
+type PitchLayer = 'spatial' | 'action';
+const formatValue = (value: number, digits = 2) => `${value >= 0 ? '+' : ''}${value.toFixed(digits)}`;
+const totalValue = (player: Player) => player.action + player.spatial;
 
 export function Dashboard() {
-  const initialPlayer = players.find(p=>p.name.includes('Sané')) ?? players[0];
-  const initialCompare = players.find(p=>p.name.includes('Musiala')) ?? players[1];
+  const initialPlayer = players.find((player) => player.name.includes('Kimmich')) ?? players[0];
+  const initialCompare = players.find((player) => player.name.includes('Musiala')) ?? players[1];
   const [selectedId, setSelectedId] = useState(initialPlayer.id);
   const [compareId, setCompareId] = useState(initialCompare.id);
-  const [team, setTeam] = useState<string>(initialPlayer.team);
-  const selected = players.find(p => p.id === selectedId) ?? players[0];
-  const compare = players.find(p => p.id === compareId) ?? players[11];
+  const [team, setTeam] = useState(initialPlayer.team);
+  const selected = players.find((player) => player.id === selectedId) ?? players[0];
+  const compare = players.find((player) => player.id === compareId) ?? players[1];
 
-  useEffect(() => {
-    const context = document.modelContext;
-    if (!context?.registerTool) return;
-    const lifecycle = new AbortController();
-    const selectPlayer = (input: unknown) => {
-      const playerId = typeof input === 'object' && input ? (input as { playerId?: unknown }).playerId : undefined;
-      const player = players.find(p => p.id === playerId);
-      if (!player) throw new Error('Unknown playerId');
-      setSelectedId(player.id); setTeam(player.team);
-      return { playerId: player.id, playerName: player.name, zcpv: Number((player.action + player.spatial).toFixed(2)) };
-    };
-    try {
-      void Promise.resolve(context.registerTool({
-        name:'select_player', title:'Select player', description:'Select a player in the visible ZCPV dashboard.',
-        inputSchema:{ type:'object', properties:{playerId:{type:'string', enum:players.map(p => p.id)}}, required:['playerId'], additionalProperties:false },
-        annotations:{readOnlyHint:false, untrustedContentHint:false}, execute:selectPlayer,
-      }, { signal:lifecycle.signal })).catch(() => undefined);
-    } catch { /* WebMCP is optional in unsupported browsers. */ }
-    return () => lifecycle.abort();
-  }, []);
+  const choosePlayer = (id: string) => {
+    const player = players.find((candidate) => candidate.id === id);
+    if (!player) return;
+    setSelectedId(player.id);
+    setTeam(player.team);
+  };
 
-  return <main className="min-h-screen bg-background px-4 py-4 text-foreground sm:px-6 lg:px-8">
-    <Header />
-    <section className="mx-auto mt-6 max-w-[1500px]">
-      <MatchHeader />
-      <Tabs defaultValue="match" className="mt-6">
-        <TabsList aria-label="Dashboard views" className="h-auto rounded-xl border border-white/10 bg-white/[.035] p-1">
-          <TabsTrigger value="match">Match lab</TabsTrigger><TabsTrigger value="compare">Compare</TabsTrigger>
-        </TabsList>
-        <TabsContent value="match" className="mt-5"><MatchView selected={selected} setSelectedId={setSelectedId} team={team} setTeam={setTeam} /></TabsContent>
-        <TabsContent value="compare" className="mt-5"><CompareView left={selected} right={compare} setLeft={setSelectedId} setRight={setCompareId} /></TabsContent>
-      </Tabs>
-      <footer className="mt-6 border-t border-white/10 py-5 text-xs leading-relaxed text-muted-foreground">Data: Deutsche Fußball Liga (DFL), licensed CC BY 4.0. Methodology dataset: Bassek, Rein, Weber &amp; Memmert (2025), <a className="text-lime-300 hover:underline" href={`https://doi.org/${provenance.doi}`}>Scientific Data</a>. ZCPV values are research-prototype outputs, not official DFL ratings.</footer>
-    </section>
-  </main>;
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <Header />
+      <div className="mx-auto max-w-[1560px] px-4 pb-10 pt-7 sm:px-7 lg:px-10">
+        <MatchHeader />
+        <Tabs defaultValue="study" className="mt-7">
+          <TabsList aria-label="Analysis views" className="lab-tabs">
+            <TabsTrigger value="study">Match study</TabsTrigger>
+            <TabsTrigger value="compare">Compare players</TabsTrigger>
+            <TabsTrigger value="validation">Model validation</TabsTrigger>
+            <TabsTrigger value="method">Method &amp; limits</TabsTrigger>
+          </TabsList>
+          <TabsContent value="study" className="mt-5">
+            <MatchStudy selected={selected} onSelect={choosePlayer} team={team} setTeam={setTeam} />
+          </TabsContent>
+          <TabsContent value="compare" className="mt-5">
+            <CompareView left={selected} right={compare} setLeft={choosePlayer} setRight={setCompareId} />
+          </TabsContent>
+          <TabsContent value="validation" className="mt-5"><ValidationView /></TabsContent>
+          <TabsContent value="method" className="mt-5"><MethodView /></TabsContent>
+        </Tabs>
+        <footer className="mt-8 flex flex-wrap items-start justify-between gap-3 border-t border-border pt-5 text-xs leading-relaxed text-muted-foreground">
+          <p>DFL / IDSSE data · CC BY 4.0 · ZCPV values are experimental and are not official DFL ratings.</p>
+          <a className="link" href={`https://doi.org/${provenance.doi}`}>Dataset methodology <ArrowRight size={12} /></a>
+        </footer>
+      </div>
+    </main>
+  );
 }
 
 function Header() {
-  return <header className="mx-auto flex max-w-[1500px] items-center justify-between border-b border-white/10 pb-4">
-    <div className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-lime-300 text-slate-950"><Activity size={20} /></span><div><p className="font-semibold tracking-tight">ZCPV Lab</p><p className="text-xs text-muted-foreground">Spatial player value</p></div></div>
-    <div className="flex items-center gap-2 rounded-full border border-lime-300/20 bg-lime-300/5 px-3 py-2 text-xs text-lime-200"><Radio size={13} /> Official DFL tracking</div>
-  </header>;
+  return <header className="border-b border-border bg-card"><div className="mx-auto flex h-16 max-w-[1560px] items-center justify-between px-4 sm:px-7 lg:px-10">
+    <div className="flex items-center gap-3"><span className="brand-mark">Z</span><div><p className="text-sm font-semibold tracking-[-.01em]">ZCPV Research Lab</p><p className="text-[11px] text-muted-foreground">Counterfactual football analysis</p></div></div>
+    <div className="status"><span /> Verified public match data</div>
+  </div></header>;
 }
 
 function MatchHeader() {
-  const [homeScore,awayScore]=match.score.split(':');
-  return <div className="flex flex-wrap items-end justify-between gap-4">
-    <div><p className="eyebrow">Bundesliga · Matchday {match.matchday} · May 27, 2023 · Full time</p><h1 className="mt-2 text-3xl font-semibold tracking-[-.04em] sm:text-4xl">{match.teams[0]} <span className="text-muted-foreground">{homeScore}</span> — <span className="text-muted-foreground">{awayScore}</span> {match.teams[1]}</h1></div>
-    <div className="flex gap-2"><MiniMetric icon={<Cpu size={15}/>} label="Engine" value="Measured CPU"/><MiniMetric icon={<ScanLine size={15}/>} label="Grid" value="32 × 21"/><MiniMetric icon={<Timer size={15}/>} label="Tracking" value={`${provenance.analysis_hz} Hz of ${provenance.source_hz} Hz`}/></div>
+  const [homeScore, awayScore] = match.score.split(':');
+  return <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+    <div><p className="eyebrow">Bundesliga · Matchday {match.matchday} · 27 May 2023</p><div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2"><h1 className="display-title">{match.teams[0]}</h1><div className="scoreline"><b>{homeScore}</b><span>–</span><b>{awayScore}</b></div><h1 className="display-title">{match.teams[1]}</h1></div><p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">A single-match study of how actions and positioning changed possession threat. Select a player, then inspect the evidence behind the score.</p></div>
+    <div className="flex flex-wrap gap-2"><Fact label="Tracking" value={`${provenance.analysis_hz} Hz`} icon={<CircleGauge size={15} />} /><Fact label="Live frames" value={provenance.live_frames.toLocaleString()} icon={<Layers3 size={15} />} /><Fact label="Coverage" value={`${Math.round(provenance.coverage * 100)}%`} icon={<ShieldCheck size={15} />} /></div>
+  </section>;
+}
+
+function MatchStudy({ selected, onSelect, team, setTeam }: { selected: Player; onSelect: (id: string) => void; team: string; setTeam: (team: string) => void }) {
+  const ranked = useMemo(() => players.filter((player) => player.team === team && player.minutes >= 30).sort((a, b) => totalValue(b) - totalValue(a)), [team]);
+  const playerActions = useMemo(() => actions.filter((action) => action.player === selected.id).sort((a, b) => Math.abs(b.value) - Math.abs(a.value)), [selected.id]);
+  const [actionIndex, setActionIndex] = useState(0);
+  const [layer, setLayer] = useState<PitchLayer>('spatial');
+  const selectedAction = playerActions[actionIndex] ?? playerActions[0];
+  const pickPlayer = (id: string) => { setActionIndex(0); setLayer('spatial'); onSelect(id); };
+
+  return <div className="workspace-grid">
+    <aside className="panel overflow-hidden"><div className="panel-heading"><div><p className="eyebrow">Match contribution</p><h2 className="mt-1 font-semibold">Player index</h2></div><TeamToggle team={team} setTeam={setTeam} /></div><div className="border-b border-border px-4 py-3 text-xs text-muted-foreground">Players with at least 30 minutes · sorted by ZCPV/90</div><div>{ranked.map((player, index) => <PlayerRow key={player.id} player={player} index={index} active={selected.id === player.id} onClick={() => pickPlayer(player.id)} />)}</div></aside>
+    <section className="space-y-4">
+      <div className="panel overflow-hidden"><div className="flex flex-wrap items-start justify-between gap-4 border-b border-border p-5"><div><p className="eyebrow">Evidence view</p><h2 className="mt-1 text-xl font-semibold">{layer === 'spatial' ? 'Where positioning carried value' : 'Selected on-ball action'}</h2></div><div className="segmented" aria-label="Pitch layer"><button className={layer === 'spatial' ? 'active' : ''} onClick={() => setLayer('spatial')}>Spatial value</button><button className={layer === 'action' ? 'active' : ''} onClick={() => setLayer('action')} disabled={!selectedAction}>Action</button></div></div><div className="p-4 sm:p-6"><Pitch values={selected.zones} action={layer === 'action' ? selectedAction : undefined} /><div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground"><p>{layer === 'spatial' ? `Estimated team-control value lost when ${shortName(selected.name)} is removed.` : 'Origin and destination are reconstructed from the official synchronized event feed.'}</p><span>Attacking direction <ArrowRight className="inline" size={13} /></span></div></div></div>
+      <ActionLedger actions={playerActions} selectedIndex={actionIndex} onSelect={(index) => { setActionIndex(index); setLayer('action'); }} />
+    </section>
+    <aside className="space-y-4"><PlayerBrief player={selected} actions={playerActions} selectedAction={selectedAction} /><div className="note-card"><div className="flex gap-3"><FlaskConical size={17} /><div><b>Interpret carefully</b><p>This is one match, not a scouting grade. Per-90 rates amplify short appearances and confidence intervals are not yet available.</p></div></div></div></aside>
   </div>;
 }
 
-function MatchView({selected,setSelectedId,team,setTeam}:{selected:Player;setSelectedId:(id:string)=>void;team:string;setTeam:(t:string)=>void}) {
-  const ranked = useMemo(() => players.filter(p=>p.team===team&&p.minutes>=30).sort((a,b)=>(b.action+b.spatial)-(a.action+a.spatial)),[team]);
-  return <div className="grid gap-5 xl:grid-cols-[350px_minmax(0,1fr)]">
-    <aside className="panel overflow-hidden">
-      <div className="flex items-end justify-between border-b border-white/10 px-5 py-4"><div><p className="eyebrow">Match ranking · ≥30 min</p><h2 className="mt-1 text-lg font-semibold">{team}</h2></div><button onClick={()=>setTeam(team===match.teams[0]?match.teams[1]:match.teams[0])} className="rounded-lg border border-white/10 px-2.5 py-1.5 text-xs text-muted-foreground hover:bg-white/5 hover:text-white">Switch team</button></div>
-      <div>{ranked.map((p,i)=><PlayerRow key={p.id} player={p} index={i} active={selected.id===p.id} onClick={()=>setSelectedId(p.id)}/>)}</div>
-      <div className="border-t border-white/10 p-4 text-xs leading-relaxed text-muted-foreground"><Info size={13} className="mr-1 inline"/> Scores are per 90. Cyan is on-ball action value; lime is off-ball spatial value.</div>
-    </aside>
-    <div className="space-y-5">
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,.8fr)_minmax(380px,1.2fr)]"><ScoreBreakdown player={selected}/><PitchPanel player={selected}/></div>
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)]"><Timeline player={selected}/><ZoneGrid player={selected}/></div>
+function PlayerRow({ player, index, active, onClick }: { player: Player; index: number; active: boolean; onClick: () => void }) {
+  const score = totalValue(player);
+  return <button onClick={onClick} className={`player-row ${active ? 'active' : ''}`} aria-label={`Inspect ${player.name}`}><span className="rank">{String(index + 1).padStart(2, '0')}</span><span className="shirt">{player.number}</span><span className="min-w-0 flex-1"><span className="flex items-baseline justify-between gap-2"><b className="truncate text-sm">{player.name}</b><b className={score < 0 ? 'negative' : ''}>{formatValue(score)}</b></span><span className="mt-1 flex justify-between text-[11px] text-muted-foreground"><span>{player.role} · {player.minutes.toFixed(0)} min</span><span>{formatValue(player.action)} ball · {formatValue(player.spatial)} space</span></span></span><span className="text-muted-foreground">›</span></button>;
+}
+
+function PlayerBrief({ player, actions: playerActions, selectedAction }: { player: Player; actions: MatchAction[]; selectedAction?: MatchAction }) {
+  const score = totalValue(player);
+  const actionShare = Math.round((Math.abs(player.action) / Math.max(0.001, Math.abs(player.action) + Math.abs(player.spatial))) * 100);
+  const sample = player.minutes >= 75 ? 'Full-match sample' : player.minutes >= 45 ? 'Moderate sample' : 'Limited sample';
+  return <section className="panel p-5"><div className="flex items-start justify-between gap-3"><div><p className="eyebrow">Selected player</p><h2 className="mt-2 text-2xl font-semibold">{player.name}</h2><p className="mt-1 text-sm text-muted-foreground">#{player.number} · {player.role} · {player.team}</p></div><span className="sample-tag">{sample}</span></div><div className="score-block"><p>ZCPV / 90</p><strong className={score < 0 ? 'negative' : ''}>{formatValue(score)}</strong><span>Experimental match contribution</span></div><div className="metric-pair"><Metric label="On-ball" value={player.action} detail={`${actionShare}% of absolute score`} /><Metric label="Off-ball space" value={player.spatial} detail={`${100 - actionShare}% of absolute score`} /></div><div className="mt-5 border-t border-border pt-5"><div className="flex items-center justify-between"><p className="eyebrow">Action evidence</p><span className="text-xs text-muted-foreground">{playerActions.length} valued actions</span></div>{selectedAction ? <div className="mt-3"><div className="flex items-center justify-between"><b>{selectedAction.minute}′ · {selectedAction.type}</b><b className={selectedAction.value < 0 ? 'negative' : 'positive'}>{formatValue(selectedAction.value, 3)}</b></div><p className="mt-2 text-sm leading-6 text-muted-foreground">{explainAction(selectedAction)}</p></div> : <p className="mt-3 text-sm text-muted-foreground">No valued on-ball event is attributed to this player in the feed.</p>}</div></section>;
+}
+
+function ActionLedger({ actions: playerActions, selectedIndex, onSelect }: { actions: MatchAction[]; selectedIndex: number; onSelect: (index: number) => void }) {
+  return <section className="panel overflow-hidden"><div className="panel-heading"><div><p className="eyebrow">Traceable evidence</p><h2 className="mt-1 font-semibold">Highest-impact actions</h2></div><MousePointer2 size={16} className="text-muted-foreground" /></div>{playerActions.length ? <div className="action-table"><div className="action-head"><span>Minute</span><span>Action</span><span>Movement</span><span>Value</span></div>{playerActions.slice(0, 7).map((action, index) => <button key={`${action.minute}-${index}`} className={selectedIndex === index ? 'active' : ''} onClick={() => onSelect(index)}><span>{action.minute}′</span><b>{action.type}</b><span>{zoneNames[action.from]} <ArrowDownRight size={12} /> {zoneNames[action.to]}</span><strong className={action.value < 0 ? 'negative' : 'positive'}>{formatValue(action.value, 3)}</strong></button>)}</div> : <p className="p-5 text-sm text-muted-foreground">No attributed actions are available for this player.</p>}</section>;
+}
+
+function Pitch({ values, action }: { values: number[]; action?: MatchAction }) {
+  const max = Math.max(...values.map(Math.abs), 0.001); const start = action ? zoneCenter(action.from) : null; const end = action ? zoneCenter(action.to) : null;
+  return <svg viewBox="0 0 630 408" className="pitch" aria-label={action ? 'Selected action origin and destination' : 'Spatial contribution heatmap'}><defs><marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f5f0e6" /></marker><pattern id="grass" width="140" height="408" patternUnits="userSpaceOnUse"><rect width="70" height="408" fill="#315f47"/><rect x="70" width="70" height="408" fill="#2e5943"/></pattern></defs><rect width="630" height="408" rx="8" fill="url(#grass)" />{!action && values.map((value, index) => { const xBand = Math.floor(index / 3); const yBand = index % 3; return <rect key={index} x={20 + xBand * 147.5} y={20 + yBand * 122.66} width="147.5" height="122.66" fill={value >= 0 ? '#f1c75b' : '#d05a4e'} opacity={0.06 + 0.66 * Math.abs(value) / max} />; })}<g fill="none" stroke="rgba(255,255,255,.78)" strokeWidth="2"><rect x="20" y="20" width="590" height="368"/><path d="M315 20v368"/><circle cx="315" cy="204" r="49"/><circle cx="315" cy="204" r="2" fill="white"/><path d="M20 115h86v178H20m590-178h-86v178h86M20 151h34v106H20m590-106h-34v106h34"/><path d="M106 167a49 49 0 0 1 0 74m418-74a49 49 0 0 0 0 74" opacity=".7"/></g>{action && start && end && <g><line x1={start.x} y1={start.y} x2={end.x} y2={end.y} stroke="#f5f0e6" strokeWidth="5" markerEnd="url(#arrowhead)" /><circle cx={start.x} cy={start.y} r="12" fill="#17211b" stroke="#f5f0e6" strokeWidth="3" /><circle cx={end.x} cy={end.y} r="9" fill={action.value >= 0 ? '#f1c75b' : '#d05a4e'} stroke="#17211b" strokeWidth="3" /><text x={start.x} y={start.y - 20} textAnchor="middle" className="pitch-label">{action.minute}′ {action.type}</text></g>}</svg>;
+}
+
+function CompareView({ left, right, setLeft, setRight }: { left: Player; right: Player; setLeft: (id: string) => void; setRight: (id: string) => void }) {
+  return <section className="panel p-5 sm:p-7"><div className="max-w-2xl"><p className="eyebrow">Within-match comparison</p><h2 className="mt-2 text-2xl font-semibold">Separate visible actions from spatial influence</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">Use this as a descriptive comparison of one match. It is not a role-adjusted or season-level player rating.</p></div><div className="mt-7 grid gap-5 lg:grid-cols-2"><CompareCard player={left} onChange={setLeft} /><CompareCard player={right} onChange={setRight} /></div></section>;
+}
+
+function CompareCard({ player, onChange }: { player: Player; onChange: (id: string) => void }) {
+  const score = totalValue(player);
+  return <article className="compare-card"><Select value={player.id} onValueChange={(value) => value && onChange(value)}><SelectTrigger className="w-full"><SelectValue /></SelectTrigger><SelectContent>{players.map((candidate) => <SelectItem key={candidate.id} value={candidate.id}>{candidate.name} · {candidate.role}</SelectItem>)}</SelectContent></Select><div className="mt-7 flex items-end justify-between"><div><p className="eyebrow">ZCPV / 90</p><p className={`mt-1 text-5xl font-semibold tracking-[-.06em] ${score < 0 ? 'negative' : ''}`}>{formatValue(score)}</p></div><span className="sample-tag">{player.minutes.toFixed(0)} minutes</span></div><div className="mt-7 space-y-5"><CompareBar label="On-ball action value" value={player.action} max={1.5} /><CompareBar label="Off-ball spatial value" value={player.spatial} max={3} /><CompareBar label="Combined" value={score} max={4} /></div></article>;
+}
+
+function ValidationView() {
+  const { dataset, vaep, xt, notes } = modelReport;
+  return <div className="space-y-5">
+    <section className="panel p-5 sm:p-7">
+      <div className="flex flex-wrap items-start justify-between gap-5">
+        <div className="max-w-2xl"><p className="eyebrow">Out-of-sample benchmark</p><h2 className="mt-2 text-2xl font-semibold">World Cup 2022 event baselines</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">A trained 16 × 12 xT surface now supplies the zone values in the DFL score. The VAEP-style probability model remains an independent event-data benchmark.</p></div>
+        <a className="source-link" href={dataset.repository}>StatsBomb Open Data <ArrowRight size={13} /></a>
+      </div>
+      <div className="split-strip">
+        <div style={{width:`${dataset.train_matches / dataset.matches * 100}%`}}><b>{dataset.train_matches} matches</b><span>Training · {dataset.train_actions.toLocaleString()} actions</span></div>
+        <div className="test"><b>{dataset.test_matches} matches</b><span>Held out · {dataset.test_actions.toLocaleString()} actions</span></div>
+      </div>
+      <p className="mt-3 text-xs text-muted-foreground">Chronological split · test period begins {dataset.test_start} · no held-out match is used to fit xT or VAEP.</p>
+    </section>
+
+    <div className="validation-grid">
+      <ValidationCard title="Scoring probability" subtitle="Goal by the team in possession within 10 actions" result={vaep.score} />
+      <ValidationCard title="Conceding probability" subtitle="Opponent goal within 10 actions" result={vaep.concede} />
+      <section className="panel p-5"><p className="eyebrow">xT baseline</p><h3 className="mt-2 text-lg font-semibold">{xt.grid[0]} × {xt.grid[1]} observed-event grid</h3><div className="mt-5 grid grid-cols-2 gap-2"><MiniResult label="Populated zones" value={`${xt.nonzero_zones}/${xt.grid[0] * xt.grid[1]}`} /><MiniResult label="Held-out actions" value={xt.test_actions_valued.toLocaleString()} /><MiniResult label="Peak zone value" value={xt.max_zone_value.toFixed(3)} /><MiniResult label="Mean |action value|" value={xt.mean_absolute_action_value.toFixed(4)} /></div><p className="mt-4 text-xs leading-5 text-muted-foreground">The grid is fitted on observed passes, carries, dribbles, shots, goals and turnovers—without the former hand-shaped goal prior.</p></section>
     </div>
+
+    <section className="panel p-5"><div className="grid gap-5 md:grid-cols-[180px_1fr]"><div><p className="eyebrow">Reading the result</p><p className="mt-2 text-sm font-semibold">Useful, not conclusive</p></div><ul className="validation-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul></div></section>
   </div>;
 }
 
-function PlayerRow({player,index,active,onClick}:{player:Player;index:number;active:boolean;onClick:()=>void}) {
-  const score=player.action+player.spatial; const pct=Math.max(5,Math.abs(player.action)/(Math.abs(player.action)+Math.abs(player.spatial))*100);
-  return <button aria-label={`View ${player.name}, ZCPV ${score.toFixed(2)}`} onClick={onClick} className={`block w-full border-b border-white/[.06] px-5 py-3.5 text-left transition last:border-0 ${active?'bg-lime-300/[.08]':'hover:bg-white/[.035]'}`}>
-    <span className="flex items-center gap-3"><span className="w-4 text-xs text-muted-foreground">{index+1}</span><span className="grid size-8 place-items-center rounded-full bg-slate-700 text-[11px] font-bold">{player.number}</span><span className="min-w-0 flex-1"><span className="flex justify-between gap-2"><span className="truncate text-sm font-medium">{player.name} <span className="ml-1 text-xs font-normal text-muted-foreground">{player.role}</span></span><span className="font-mono text-sm text-lime-300">+{score.toFixed(2)}</span></span><span className="mt-2 flex h-1.5 overflow-hidden rounded-full bg-white/8"><span className="bg-cyan-400" style={{width:`${pct}%`}}/><span className="flex-1 bg-lime-300"/></span></span></span>
-  </button>;
+function ValidationCard({ title, subtitle, result }: { title: string; subtitle: string; result: typeof modelReport.vaep.score }) {
+  return <section className="panel p-5"><p className="eyebrow">VAEP-style baseline</p><h3 className="mt-2 text-lg font-semibold">{title}</h3><p className="mt-1 min-h-10 text-xs leading-5 text-muted-foreground">{subtitle}</p><div className="validation-score"><div><span>Brier score</span><b>{result.brier.toFixed(5)}</b></div><div><span>vs constant baseline</span><b className="positive">{result.brier_improvement_pct.toFixed(1)}% better</b></div></div><div className="mt-4 grid grid-cols-3 gap-2"><MiniResult label="ROC AUC" value={result.roc_auc.toFixed(3)} /><MiniResult label="Log loss" value={result.log_loss.toFixed(4)} /><MiniResult label="Calibration error" value={result.calibration_error.toFixed(4)} /></div><p className="mt-4 text-[11px] text-muted-foreground">Evaluated on {result.events.toLocaleString()} unseen action states · positive rate {(result.positive_rate * 100).toFixed(2)}%</p></section>;
 }
 
-function ScoreBreakdown({player}:{player:Player}) { const total=player.action+player.spatial; const actionPct=Math.round(Math.abs(player.action)/(Math.abs(player.action)+Math.abs(player.spatial))*100); return <section className="panel p-5 sm:p-6">
-  <div className="flex items-start justify-between gap-3"><div><p className="eyebrow">Selected · {player.role} · {player.minutes} min</p><h2 className="mt-2 text-2xl font-semibold">{player.name}</h2><p className="mt-1 text-sm text-muted-foreground">#{player.number} · {player.team}</p></div><div className="text-right"><p className="text-4xl font-semibold tracking-[-.05em] text-lime-300">+{total.toFixed(2)}</p><p className="text-xs text-muted-foreground">ZCPV / 90</p></div></div>
-  <div className="mt-6 grid grid-cols-2 gap-3"><ScoreCard label="Action value" value={player.action}/><ScoreCard label="Spatial value" value={player.spatial} spatial/></div>
-  <div className="mt-6"><div className="mb-2 flex justify-between text-sm"><span>Magnitude split</span><span className="text-muted-foreground">{actionPct}% / {100-actionPct}%</span></div><div className="flex h-2 overflow-hidden rounded-full bg-white/8"><span className="bg-cyan-400" style={{width:`${actionPct}%`}}/><span className="flex-1 bg-lime-300"/></div></div>
-</section>; }
+function MiniResult({ label, value }: { label: string; value: string }) { return <div className="mini-result"><span>{label}</span><b>{value}</b></div>; }
 
-function ScoreCard({label,value,spatial=false}:{label:string;value:number;spatial?:boolean}) { return <div className="rounded-xl border border-white/10 bg-black/15 p-4"><div className={`mb-3 h-1 w-8 rounded-full ${spatial?'bg-lime-300':'bg-cyan-400'}`}/><p className="text-sm text-muted-foreground">{label}</p><p className="mt-1 text-2xl font-semibold">{value>=0?'+':''}{value.toFixed(2)}</p></div>; }
+function MethodView() {
+  const stages = [
+    { number: '01', title: 'Observed actions', copy: 'Successful moves change the value of the ball’s zone; failed moves lose its current value. Shot and defensive values remain heuristic in this version.' },
+    { number: '02', title: 'Pitch control', copy: 'Player position, velocity and reaction time estimate which team can reach every cell of a 32 × 21 grid first.' },
+    { number: '03', title: 'Counterfactual removal', copy: 'Each player is removed in turn. The drop in their team’s zone-weighted control is assigned as spatial contribution.' },
+    { number: '04', title: 'Possession aggregation', copy: 'Frames are averaged within possessions so long possessions do not receive more weight simply because they last longer.' },
+  ];
+  return <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,.65fr)]"><section className="panel p-5 sm:p-7"><p className="eyebrow">Current pipeline</p><h2 className="mt-2 text-2xl font-semibold">What the score actually measures</h2><div className="mt-7 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">{stages.map((stage) => <div key={stage.number} className="method-step"><span>{stage.number}</span><h3>{stage.title}</h3><p>{stage.copy}</p></div>)}</div></section><aside className="space-y-5"><section className="panel p-5"><p className="eyebrow">Known limitations</p><ul className="plain-list"><li>World Cup event values may not transfer perfectly to Bundesliga play.</li><li>No bootstrap uncertainty intervals yet.</li><li>Shots and defensive actions do not yet use the trained VAEP model.</li><li>Player interactions are not Shapley-adjusted.</li><li>Per-90 values are unstable for substitutes.</li></ul></section><section className="panel p-5"><p className="eyebrow">Compute benchmark</p><div className="benchmark"><b>47.5 ms</b><span>CUDA · RTX 3080</span></div><div className="mt-4 grid grid-cols-2 gap-2 text-sm"><div className="stat-cell"><span>CPU optimized</span><b>6.45 s</b></div><div className="stat-cell"><span>Speedup</span><b>135.7×</b></div></div><p className="mt-4 text-xs leading-5 text-muted-foreground">Measured on the full Köln–Bayern match at 5 Hz. This is a compute benchmark, not evidence of model accuracy.</p></section></aside></div>;
+}
 
-function PitchPanel({player}:{player:Player}) { return <section className="panel p-5 sm:p-6"><div className="mb-4 flex items-start justify-between"><div><p className="eyebrow">Leave-one-out control</p><h2 className="mt-1 text-lg font-semibold">Zone value lost without {player.name.split(' ')[0]}</h2></div><span className="rounded-full bg-lime-300/10 px-2 py-1 text-xs text-lime-200">Attacking direction →</span></div><Pitch values={player.zones}/></section>; }
-
-function Pitch({values}:{values:number[]}) { const max=Math.max(...values,.001); return <svg viewBox="0 0 520 340" aria-label="Pitch heatmap of leave-one-out control contribution" className="w-full rounded-lg border border-white/10 bg-[#102f2b]">
-  <title>Pitch heatmap of leave-one-out control contribution</title>
-  <g>{values.map((value,index)=>{const xband=Math.floor(index/3),yband=index%3; return <rect key={index} x={15+xband*122.5} y={15+yband*103.33} width="122.5" height="103.33" fill="#bef264" opacity={.04+.68*value/max}/>})}</g>
-  <g fill="none" stroke="rgba(255,255,255,.38)" strokeWidth="2"><rect x="15" y="15" width="490" height="310"/><path d="M260 15v310"/><circle cx="260" cy="170" r="42"/><circle cx="260" cy="170" r="2" fill="white"/><path d="M15 95h70v150H15m490-150h-70v150h70M15 125h28v90H15m490-90h-28v90h28"/></g>
-</svg>; }
-
-function Timeline({player}:{player:Player}) { const own=actions.filter(a=>a.player===player.id).sort((a,b)=>Math.abs(b.value)-Math.abs(a.value)).slice(0,8).sort((a,b)=>a.minute-b.minute); return <section className="panel p-5 sm:p-6"><div><p className="eyebrow">Action timeline</p><h2 className="mt-1 text-lg font-semibold">Highest-impact actions</h2></div>{own.length?<div className="relative mt-6"><div className="absolute left-0 right-0 top-[7px] h-px bg-white/15"/><div className="relative flex justify-between">{own.map((a,i)=><div key={`${a.minute}-${i}`} className="group relative flex w-5 flex-col items-center"><span className={`size-3 rounded-full ring-4 ring-[#0c1b18] ${a.value>=0?'bg-lime-300':'bg-rose-400'}`}/><span className="mt-3 text-[11px] text-muted-foreground">{a.minute}′</span><span className="pointer-events-none absolute bottom-8 z-20 hidden w-48 -translate-x-[42%] rounded-lg border border-white/10 bg-slate-950 p-3 text-left shadow-xl group-hover:block"><b className="block text-xs">{a.type} · {a.value>0?'+':''}{a.value.toFixed(2)}</b><span className="mt-1 block text-xs leading-relaxed text-slate-400">{a.detail} · zone {a.from+1} → {a.to+1}</span></span></div>)}</div></div>:<p className="mt-6 text-sm text-muted-foreground">No valued on-ball actions in this sample.</p>}<div className="mt-7 rounded-lg bg-white/[.035] px-4 py-3 text-xs text-muted-foreground">Derived from synchronized official DFL events. Hover a marker for attribution.</div></section>; }
-
-function ZoneGrid({player}:{player:Player}) { const max=Math.max(...player.zones); return <section className="panel p-5 sm:p-6"><p className="eyebrow">Spatial decomposition</p><h2 className="mt-1 text-lg font-semibold">Zone contribution</h2><div className="mt-5 grid grid-cols-4 gap-2">{player.zones.map((v,i)=><div key={zoneNames[i]} title={`${zoneNames[i]}: +${v.toFixed(3)}`} className="aspect-[1.3] rounded-md border border-white/10 p-2" style={{background:`rgba(190,242,100,${.04+.55*v/max})`}}><span className="text-[10px] text-white/65">{zoneNames[i]}</span><b className="block text-xs">+{v.toFixed(2)}</b></div>)}</div></section>; }
-
-function CompareView({left,right,setLeft,setRight}:{left:Player;right:Player;setLeft:(id:string)=>void;setRight:(id:string)=>void}) { return <div className="panel p-5 sm:p-7"><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow">Scouting lens</p><h2 className="mt-1 text-2xl font-semibold">Player comparison</h2></div><p className="max-w-md text-sm leading-relaxed text-muted-foreground">Separate visible actions from spatial influence. Values are normalized per 90 for comparable match samples.</p></div><div className="mt-7 grid gap-5 lg:grid-cols-[1fr_auto_1fr]"><CompareCard player={left} onChange={setLeft}/><div className="hidden place-items-center text-muted-foreground lg:grid">vs</div><CompareCard player={right} onChange={setRight}/></div></div>; }
-
-function CompareCard({player,onChange}:{player:Player;onChange:(id:string)=>void}) { const total=player.action+player.spatial; return <div className="rounded-2xl border border-white/10 bg-black/15 p-5"><Select value={player.id} onValueChange={(value)=>{if(value) onChange(value)}}><SelectTrigger aria-label={`Choose player, currently ${player.name}`} className="w-full bg-white/[.035]"><SelectValue/></SelectTrigger><SelectContent>{players.map(p=><SelectItem key={p.id} value={p.id}>{p.name} · {p.role} · {p.team}</SelectItem>)}</SelectContent></Select><div className="mt-6 flex items-end justify-between"><div><p className="text-sm text-muted-foreground">ZCPV / 90</p><p className="mt-1 text-5xl font-semibold tracking-[-.06em] text-lime-300">+{total.toFixed(2)}</p></div><span className="rounded-full border border-white/10 px-3 py-1 text-xs text-muted-foreground">{player.minutes} min</span></div><div className="mt-7 space-y-4"><CompareBar label="Action" value={player.action} max={1.2} cyan/><CompareBar label="Spatial" value={player.spatial} max={1.2}/><CompareBar label="Combined" value={total} max={2.4}/></div><div className="mt-6 grid grid-cols-4 gap-1.5">{player.zones.map((z,i)=><span key={i} className="aspect-square rounded-sm" style={{background:`rgba(190,242,100,${.08+Math.min(.75,z*3)})`}} title={`${zoneNames[i]}: ${z}`}/>)}</div></div>; }
-function CompareBar({label,value,max,cyan=false}:{label:string;value:number;max:number;cyan?:boolean}) { return <div><div className="mb-1.5 flex justify-between text-sm"><span>{label}</span><b>{value>=0?'+':''}{value.toFixed(2)}</b></div><div className="h-2 rounded-full bg-white/8"><div className={`h-full rounded-full ${value<0?'bg-rose-400':cyan?'bg-cyan-400':'bg-lime-300'}`} style={{width:`${Math.min(100,Math.abs(value)/max*100)}%`}}/></div></div>; }
-
-function MiniMetric({icon,label,value}:{icon:React.ReactNode;label:string;value:string}) { return <div className="hidden items-center gap-3 rounded-xl border border-white/10 bg-white/[.035] px-3 py-2.5 sm:flex"><span className="text-lime-300">{icon}</span><div><p className="text-[10px] uppercase tracking-widest text-muted-foreground">{label}</p><p className="text-xs font-medium">{value}</p></div></div>; }
+function TeamToggle({ team, setTeam }: { team: string; setTeam: (team: string) => void }) { const other = team === match.teams[0] ? match.teams[1] : match.teams[0]; return <button className="quiet-button" onClick={() => setTeam(other)}>Switch team</button>; }
+function Metric({ label, value, detail }: { label: string; value: number; detail: string }) { return <div><span>{label}</span><b className={value < 0 ? 'negative' : ''}>{formatValue(value)}</b><small>{detail}</small></div>; }
+function CompareBar({ label, value, max }: { label: string; value: number; max: number }) { return <div><div className="mb-2 flex justify-between text-sm"><span>{label}</span><b className={value < 0 ? 'negative' : ''}>{formatValue(value)}</b></div><div className="bar-track"><span className={value < 0 ? 'negative-bar' : ''} style={{ width: `${Math.min(100, Math.abs(value) / max * 100)}%` }} /></div></div>; }
+function Fact({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) { return <div className="fact"><i>{icon}</i><div><span>{label}</span><b>{value}</b></div></div>; }
+function zoneCenter(index: number) { const xBand = Math.floor(index / 3); const yBand = index % 3; return { x: 20 + (xBand + 0.5) * 147.5, y: 20 + (yBand + 0.5) * 122.66 }; }
+function shortName(name: string) { return name.split(' ').at(-1) ?? name; }
+function explainAction(action: MatchAction) { const direction = action.to === action.from ? `within ${zoneNames[action.from]}` : `from ${zoneNames[action.from]} to ${zoneNames[action.to]}`; if (action.value > 0) return `This ${action.type.toLowerCase()} increased the modelled possession value ${direction}. The number is the event-level change, before per-90 normalization.`; if (action.value < 0) return `This ${action.type.toLowerCase()} reduced the modelled possession value ${direction}. Negative events remain visible rather than being hidden by the player total.`; return `This ${action.type.toLowerCase()} produced no measured change in the current 12-zone action model.`; }
