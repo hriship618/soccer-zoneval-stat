@@ -67,7 +67,9 @@ def _event_rows(path: Path) -> list[dict]:
         play, shot, tackle = _descendant(event, 'Play'), _descendant(event, 'ShotAtGoal'), _descendant(event, 'TacklingGame')
         timestamp = datetime.fromisoformat(event.get('EventTime'))
         segment = 'secondHalf' if kickoffs.get('secondHalf') and timestamp >= kickoffs['secondHalf'] else 'firstHalf'
-        actor = shot or play or tackle
+        # ElementTree leaf elements are falsey even when present.  Selecting an
+        # actor with ``shot or play`` therefore drops valid leaf nodes.
+        actor = shot if shot is not None else play if play is not None else tackle
         if actor is None:
             continue
         kind = 'shot' if shot is not None else ('tackle' if tackle is not None else 'pass' if _descendant(event, 'Pass') is not None else 'play')
@@ -187,15 +189,22 @@ def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
                 idx = frame_index.get((segment, int(frame.get('N'))))
                 if idx is not None: positions[idx,pidx] = (float(frame.get('X'))+52.5, float(frame.get('Y'))+34.0)
         elem.clear()
-    velocities = np.zeros_like(positions); dt = 1.0 / target_hz
+    segments = np.array([key[0] for key in keys])
+    frame_numbers = np.array([key[1] for key in keys])
+    # Missing velocity is missing data, not a stationary player.  Do not
+    # differentiate across period boundaries or discontinuities in the feed.
+    velocities = np.full_like(positions, np.nan)
+    contiguous = (segments[1:] == segments[:-1]) & (frame_numbers[1:] > frame_numbers[:-1])
+    frame_delta = (frame_numbers[1:] - frame_numbers[:-1]) / source_hz
+    contiguous &= frame_delta <= max(0.5, 2.5 / target_hz)
     both = np.isfinite(positions[1:]).all(-1) & np.isfinite(positions[:-1]).all(-1)
-    diff = (positions[1:] - positions[:-1]) / dt; velocities[1:][both] = diff[both]
+    valid = both & contiguous[:, None]
+    diff = (positions[1:] - positions[:-1]) / np.maximum(frame_delta[:, None, None], 1e-6)
+    velocities[1:][valid] = diff[valid]
     teams = np.array([p.team_index for p in players], dtype=np.int8)
     active = np.isfinite(positions).all(-1)
     live = np.array([key in live_keys for key in keys], dtype=bool)
     possessions = np.array([possession_by_key.get(key, 0) for key in keys], dtype=np.int8)
-    segments = np.array([key[0] for key in keys])
-    frame_numbers = np.array([key[1] for key in keys])
     return positions, velocities, teams, active, live, possessions, segments, frame_numbers, source_hz
 
 
@@ -245,4 +254,4 @@ def crunch_match(match_dir: Path, all_event_paths: list[Path], zone_values: np.n
         if minutes[i] < 1: continue
         action_per90 = action_totals[p.id] * 90/max(minutes[i],1)
         output_players.append({**asdict(p),'minutes':round(float(minutes[i]),1),'action':round(float(action_per90),4),'spatial':round(float(spatial_zones[i].sum()),4),'zones':[round(float(x),5) for x in spatial_zones[i]]})
-    return {'metadata':{k:v for k,v in metadata.items() if k!='players'},'provenance':{'source':'DFL / IDSSE','license':'CC BY 4.0','doi':'10.1038/s41597-025-04505-y','computed':True,**quality},'zone_values':zone_values.tolist(),'players':output_players,'actions':actions}
+    return {'metadata':{k:v for k,v in metadata.items() if k!='players'},'provenance':{'source':'DFL / IDSSE','license':'CC BY 4.0','doi':'10.1038/s41597-025-04505-y','computed':True,'model_version':'legacy_v0','scientific_status':'descriptive_match_demo',**quality},'zone_values':zone_values.tolist(),'players':output_players,'actions':actions}

@@ -1,6 +1,9 @@
 # ZCPV Lab
 
-Zonal Counterfactual Player Value is a research prototype for soccer player valuation from continuous tracking and event data. It combines transparent on-ball action value with leave-one-out pitch-control attribution, then exposes both components in an interactive dashboard.
+Zonal Counterfactual Player Value is a research prototype for tracking-informed soccer impact analysis. The repository now keeps two explicitly separate paths:
+
+- `legacy_v0`: the original single-match action plus pitch-control demo, retained unchanged in purpose.
+- `zcpv-v1-research`: an auditable pipeline toward offensive and defensive non-penalty xG impact per 90. It refuses to publish ratings when target or sample requirements are not met.
 
 ## What is implemented
 
@@ -14,8 +17,15 @@ Zonal Counterfactual Player Value is a research prototype for soccer player valu
 - trained 16 × 12 xT and VAEP-style scoring/conceding probability baselines
 - chronological match-level validation with Brier score, log loss, ROC AUC, and calibration error
 - responsive dashboard with match ranking, player detail, timeline, spatial heatmap, comparison, and methodology views
+- canonical DFL matches, events, tracking, lineups and state-sample schemas
+- raw-to-parsed event audits, exclusion reasons, checksums and match quality reports
+- leakage-safe 15-second target construction with fixed reference-team identity
+- heuristic receiving feasibility, pressure, lane-coverage and transition-protection features
+- lagged exposure-aware player profiles and role-aware shrinkage
+- duration-weighted offensive/defensive impact estimator with separate regularization
+- match-level splits, evaluation helpers and match-block bootstrap infrastructure
 
-The dashboard shows the real 1. FC Köln 1–2 FC Bayern München match from May 27, 2023. Player names, minutes, event actions, and tracking samples come from the DFL/IDSSE open-data release (CC BY 4.0). ZCPV values are this project's research-prototype outputs, not official DFL ratings. Zone values come from the trained StatsBomb World Cup 2022 xT surface, area-averaged from 16 × 12 to the dashboard's 4 × 3 tactical grid. No hand-shaped shot or goal counts are injected into the fit.
+The dashboard shows the real 1. FC Köln 1–2 FC Bayern München match from May 27, 2023. Player names, minutes, event actions, and tracking samples come from the DFL/IDSSE open-data release (CC BY 4.0). The visible match ranking is labeled `legacy_v0`; it is descriptive and is not the v1 player-impact model. The v1 research tab exposes its current `insufficient_data` status instead of fabricated zero ratings.
 
 ## Run the dashboard
 
@@ -30,6 +40,29 @@ npm run dev
 python -m pip install -e .
 python scripts/crunch_dfl.py --match J03WMX
 ```
+
+## Run the v1 research pipeline
+
+All generated canonical tables, quality reports and model artifacts are written under ignored `data/processed/` paths. JSONL is the dependency-free canonical interchange; `schema.json` records exact fields and coordinate/time conventions.
+
+```bash
+python -m scripts.train_zcpv audit
+python -m scripts.train_zcpv features
+python -m scripts.train_zcpv state
+python -m scripts.train_zcpv profiles
+python -m scripts.train_zcpv impact
+python -m scripts.train_zcpv evaluate
+python -m scripts.train_zcpv export
+python -m scripts.train_zcpv smoke
+```
+
+Run every locally executable stage with:
+
+```bash
+python -m scripts.train_zcpv all
+```
+
+Add `--include-tracking` to the audit command to materialize sampled 1 Hz tracking JSONL. This is deliberately opt-in because it is large. The smoke stage uses synthetic fixtures only to prove software invariants; its outputs are never shown as real estimates.
 
 ## Train the event-data baselines
 
@@ -56,7 +89,9 @@ Recorded on the real Köln–Bayern match (17,071 live tracking frames at 5 Hz; 
 
 For successful passes and carries, value is `V(destination) - V(origin)`. Failed actions lose the origin value. Shots use a small logistic xG model. Same-zone take-ons use avoided possession-loss risk. Defensive regains receive the opponent threat prevented. For every tracking frame, a player's spatial value is the zone-value-weighted loss in their team's pitch control when that player is removed. Match totals are normalized per 90 minutes.
 
-This version is a single-match tracking study, not a scouting grade. The trained World Cup xT surface now drives the displayed zone values, but shots and defensive actions remain partly heuristic, per-90 values are unstable for short appearances, and uncertainty intervals are not yet implemented. The dashboard exposes these limitations instead of treating the ranking as ground truth.
+Legacy v0 is a single-match tracking study, not a scouting grade. The trained World Cup xT surface drives its displayed zone values, but shots and defensive actions remain partly heuristic and per-90 values are unstable for short appearances.
+
+V1 requires provider xG or a separately trained and frozen calibrated xG model plus substantially more chronological lineup variation. The seven DFL matches support ingestion checks and exploratory tracking features, not credible season rankings. When those requirements are absent, fitting stages return `insufficient_data`. See [the v1 methodology](docs/METHODOLOGY_V1.md) and [implementation report](docs/IMPLEMENTATION_REPORT.md).
 
 ## Data attribution
 

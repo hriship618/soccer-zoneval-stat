@@ -9,11 +9,12 @@ dependencies = ["numpy>=2.0", "scikit-learn>=1.4"]
 requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-packages = ["zcpv"]
+[tool.setuptools.packages.find]
+include = ["zcpv*"]
 
 [tool.setuptools.package-data]
 zcpv = ["cuda/*.cu"]
 
 [project.optional-dependencies]
 cuda = ["cupy-cuda12x>=13.0"]
+dev = ["pytest>=8.0"]
