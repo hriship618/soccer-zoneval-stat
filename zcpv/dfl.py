@@ -161,7 +161,7 @@ def value_match_actions(path: Path, players: list[DFLPlayer], zone_values: np.nd
 
 
 def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
-    frames_by_segment: dict[str, set[int]] = defaultdict(set); live_keys = set(); possession_by_key = {}; stride = None; source_hz = 25.0
+    frames_by_segment: dict[str, set[int]] = defaultdict(set); live_keys = set(); possession_by_key = {}; timestamp_by_key = {}; stride = None; source_hz = 25.0
     for _, elem in ET.iterparse(path, events=('end',)):
         if elem.tag != 'FrameSet' or (elem.get('TeamId') or '').lower() != 'ball':
             continue
@@ -174,6 +174,7 @@ def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
             n = int(frame.get('N'))
             if n % stride == 0:
                 key = (segment, n); frames_by_segment[segment].add(n)
+                timestamp_by_key[key] = datetime.fromisoformat(frame.get('T')).timestamp()
                 if frame.get('BallStatus') == '1': live_keys.add(key)
                 possession_by_key[key] = int(float(frame.get('BallPossession') or 0))
         elem.clear()
@@ -191,6 +192,7 @@ def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
         elem.clear()
     segments = np.array([key[0] for key in keys])
     frame_numbers = np.array([key[1] for key in keys])
+    timestamps = np.array([timestamp_by_key[key] for key in keys], dtype=np.float64)
     # Missing velocity is missing data, not a stationary player.  Do not
     # differentiate across period boundaries or discontinuities in the feed.
     velocities = np.full_like(positions, np.nan)
@@ -205,11 +207,11 @@ def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
     active = np.isfinite(positions).all(-1)
     live = np.array([key in live_keys for key in keys], dtype=bool)
     possessions = np.array([possession_by_key.get(key, 0) for key in keys], dtype=np.int8)
-    return positions, velocities, teams, active, live, possessions, segments, frame_numbers, source_hz
+    return positions, velocities, teams, active, live, possessions, segments, frame_numbers, timestamps, source_hz
 
 
 def spatial_match(path: Path, event_path: Path, metadata: dict, zone_values: np.ndarray, target_hz: int = 5, chunk_size: int = 240) -> tuple[np.ndarray, np.ndarray, dict]:
-    positions, velocities, teams, active, live, possessions, segments, frame_numbers, source_hz = read_tracking(path, metadata, target_hz)
+    positions, velocities, teams, active, live, possessions, segments, frame_numbers, timestamps, source_hz = read_tracking(path, metadata, target_hz)
     players = metadata['players']; totals = np.zeros((len(players),12), dtype=np.float64); cfg = PitchControlConfig(grid_x=32, grid_y=21)
     direction = _attacking_directions(_event_rows(event_path)); team_ids = {p.team_index:p.team_id for p in players}
     for segment in ('firstHalf','secondHalf'):

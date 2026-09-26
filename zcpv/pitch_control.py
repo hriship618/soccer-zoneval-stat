@@ -53,6 +53,36 @@ def leave_one_out_zone_values(
     if zone_values.shape not in {(12,), (2, 12)}:
         raise ValueError("zone_values must contain 12 values or have shape [2, 12]")
 
+    _, result = pitch_control_counterfactuals(positions, velocities, teams, zone_values, config)
+    return result
+
+
+def pitch_control_counterfactuals(
+    positions: np.ndarray,
+    velocities: np.ndarray,
+    teams: np.ndarray,
+    zone_values: np.ndarray,
+    config: PitchControlConfig = PitchControlConfig(),
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return full team control and every leave-one-player-out control loss.
+
+    Both arrays are zone aggregated and threat weighted. ``team_control`` has
+    shape ``[frame, team, zone]`` and ``player_loss`` has shape
+    ``[frame, player, zone]``. Supplying the same actor-relative threat surface
+    for both teams makes attacking and defensive counterfactuals comparable at
+    a synchronized event without inventing tracking for event-only datasets.
+    """
+    positions = np.asarray(positions, dtype=np.float32)
+    velocities = np.asarray(velocities, dtype=np.float32)
+    teams = np.asarray(teams, dtype=np.int8)
+    zone_values = np.asarray(zone_values, dtype=np.float32)
+    if positions.ndim != 3 or positions.shape[2] != 2 or velocities.shape != positions.shape:
+        raise ValueError("positions and velocities must have shape [frames, players, 2]")
+    if teams.shape != (positions.shape[1],) or set(np.unique(teams)) - {0, 1}:
+        raise ValueError("teams must be a player-length 0/1 vector")
+    if zone_values.shape not in {(12,), (2, 12)}:
+        raise ValueError("zone_values must contain 12 values or have shape [2, 12]")
+
     points, zone_ids = grid_points(config)
     active = np.isfinite(positions).all(axis=-1)
     safe_positions = np.nan_to_num(positions, nan=0.0)
@@ -62,7 +92,13 @@ def leave_one_out_zone_values(
     team_sum = np.stack((weights[:, teams == 0].sum(axis=1), weights[:, teams == 1].sum(axis=1)), axis=1)
     total = np.maximum(team_sum.sum(axis=1), 1e-12)
     full_control = team_sum / total[:, None, :]
+    full_zones = np.zeros((positions.shape[0], 2, 12), dtype=np.float32)
     result = np.zeros((positions.shape[0], positions.shape[1], 12), dtype=np.float32)
+    for team in (0, 1):
+        for zone in range(12):
+            cells = zone_ids == zone
+            weight = zone_values[zone] if zone_values.ndim == 1 else zone_values[team, zone]
+            full_zones[:, team, zone] = full_control[:, team, cells].mean(axis=1) * weight
     for player in range(positions.shape[1]):
         own = teams[player]
         removed = weights[:, player]
@@ -73,7 +109,7 @@ def leave_one_out_zone_values(
             cells = zone_ids == zone
             weight = zone_values[zone] if zone_values.ndim == 1 else zone_values[own, zone]
             result[:, player, zone] = delta[:, cells].mean(axis=1) * weight
-    return result
+    return full_zones, result
 
 
 def naive_leave_one_out_zone_values(positions: np.ndarray, velocities: np.ndarray, teams: np.ndarray, zone_values: np.ndarray, config: PitchControlConfig = PitchControlConfig()) -> np.ndarray:

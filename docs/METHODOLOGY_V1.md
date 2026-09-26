@@ -1,31 +1,44 @@
-# PIVOT v1 research methodology
+# PIVOT real-data methodology
 
-PIVOT (Player Impact via Outcomes and Tracking) v1 is a proposed tracking-informed soccer impact metric. It combines on-ball actions with spatial measurements of receiving availability, pressure, lane coverage and transition protection. Models trained on held-out match sequences estimate each side's near-term non-penalty expected goals. Lagged player measurements then inform a regularized lineup model that estimates O-PIVOT, D-PIVOT, and net non-penalty xG impact per 90.
+The production estimator is implemented by `python -m scripts.run_pivot`. It keeps event-only World Cup data and DFL tracking data separate until inference in their genuinely shared action space.
 
-This is a research prototype. Its first question is whether tracking information improves out-of-time prediction beyond event-only baselines. It does not claim comprehensive, replacement-level or causal player value.
+## World Cup event model
 
-## Evidence chain
+The 64 FIFA World Cup 2022 StatsBomb Open Data matches are sorted chronologically and split by match: 38 train, 13 validation and 13 test. Penalty shootouts are excluded. A state is observed after an action; its binary targets are a goal scored and a goal conceded in the next 10 same-period actions. The current action is excluded and incomplete period-end horizons are censored.
 
-1. The DFL adapter normalizes provider metadata, events, sampled tracking and lineup intervals. Physical and attacking coordinates are both retained; provider directions are preferred and inferred fallbacks are recorded.
-2. Live-play states are sampled at 1 Hz. The team in possession becomes the fixed reference team for the full future window, including after turnovers.
-3. Targets sum provider non-penalty xG in `(t, t + 15s]` separately for the reference team and opponent. Windows do not cross periods; unknown possession, ambiguous shot synchronization and right-censored states are excluded.
-4. Event-context and tracking-augmented situation models use identical match-level partitions. A shot-occurrence classifier times a nonnegative conditional xG regressor is compared with direct regression.
-5. Player-match measurements retain exposure, volume, effectiveness, units and missingness. Profiles use earlier matches only, exponential recency weighting and role-aware shrinkage based on episode or match exposure—not frame count.
-6. Substitution, dismissal and period boundaries define lineup segments. Two attacking-perspective rows from one segment remain in the same fold.
-7. The impact model predicts segment npxG rate from context, summed lagged profiles and regularized player residuals. Positive defense means less npxG conceded. Offense plus defense equals net.
+The current action and two prior same-period actions supply type, normalized start/end coordinates, displacement, completion, relation to the current team and shot geometry. Clock, period and score difference are state context. Histogram gradient boosting estimates `P(score)` and `P(concede)`. A separate geometry regressor transfers StatsBomb shot xG to DFL shots for the xT baseline. No World Cup record receives tracking features.
 
-Physical DFL coordinates use metres from the home-left corner (`x=0..105`, `y=0..68`). Feature extraction rotates every entity and velocity into the reference team's attacking-right coordinate system. Open-play receiver eligibility applies the ball, halfway line, and second-last-opponent offside tests; goal kicks, throw-ins, and corners are exempt. Lane danger uses the squared attacking-x fraction as an explicitly heuristic weight and is stored separately from raw coverage.
+For DFL event `e`, actor-oriented on-ball value is
 
-The StatsBomb event baseline is a post-action forecast: features may include the completed current action, but its outcome is never a future label. The label window begins with the next action, remains inside the same period, and is censored unless ten later same-period actions exist. Period-five shootout events are excluded.
+```text
+EV_e = (P_WC(score|post_e) - P_WC(concede|post_e))
+     - (P_WC(score|pre_e)  - P_WC(concede|pre_e)).
+```
 
-## Interpretation boundaries
+When possession changes, the prior net state is sign-flipped into the new actor's frame.
 
-- Receiver feasibility is a configurable ground-pass arrival/interception heuristic, not a calibrated completion probability.
-- Pressure, lane coverage and transition protection are experimental proxies, not independently verified causal contributions.
-- Team-season sensitivity controls compete with player effects and cannot guarantee causal separation.
-- Goalkeepers remain lineup controls but are excluded from public outfield rankings. Their coefficient is not shot-stopping ability.
-- Negative predicted rates remain visible in evaluation rather than being clipped to improve reported metrics.
+## DFL tracking model
 
-## Availability rule
+Provider directions rotate each DFL action so the actor attacks left-to-right, then metres are scaled into the World Cup 120 × 80 action representation. Each event is joined only to a real, live DFL tracking frame from the same period.
 
-Production fitting is blocked unless the data provide non-penalty xG or a documented frozen xG model, enough positive windows, chronological partitions, valid lineups and adequate lineup variation. Synthetic fixtures verify code behavior only. Null estimates are exported with a reason; they are never replaced by zero.
+At that frame, reaction- and velocity-adjusted time to intercept creates pitch control on a 32 × 21 grid. Control is aggregated into 12 tactical zones and weighted by the World Cup-trained xT surface in the actor's attacking direction. Exact algebraic leave-one-player-out recomputation provides each active player's counterfactual control loss.
+
+## Cross-fitted fusion and attribution
+
+Seven leave-one-match-out folds fit two regularized logistic calibrators on six DFL matches and apply them to the seventh. Inputs are the World Cup score/concede probability logit and actor-oriented threat-weighted team control advantage. The label is again scoring or conceding in the next 10 same-period DFL actions. Consequently, no displayed contribution comes from a model fitted on its own match.
+
+For player `i`, remove their pitch-control mass and recompute the fused net probability. Orient the change to the player's own team to obtain `SCF_i,e`. Then
+
+```text
+C_i,e = 1[i is the actor] EV_e + SCF_i,e.
+```
+
+Aggregate all held-out player-event contributions, divide by active synchronized event samples and express the rate per 100 samples. Empirical-Bayes shrinkage uses reliability `N_i/(N_i+100)`. The display rating is `50 + 10z`, standardized separately for goalkeepers and outfield players because their removal distributions are structurally different. Qualification requires 30 tracked minutes and 30 event samples.
+
+## Evaluation
+
+The World Cup test partition reports Brier score, log loss, ROC AUC and calibration error. DFL evaluation concatenates predictions from the seven held-out folds and compares constant, transferred World Cup and tracking-fusion probabilities. A secondary 14 team-match diagnostic compares raw event totals, minutes-adjusted event value, transferred xT and PIVOT against goal difference; it is explicitly descriptive because the sample is very small.
+
+## Scope
+
+These are real, reproducible rankings for the supplied matches, not season-long talent estimates or causal effects. Important limitations are event-model domain shift, sparse DFL goal labels, pitch-control assumptions, dependence among matches, and a rating scale local to this player pool. Exact results are written to `data/processed/pivot/pivot-report.json` on every run.

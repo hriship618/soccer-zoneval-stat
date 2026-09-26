@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'PIVOT — Player Impact via Outcomes and Tracking',
-  description: 'Zonal counterfactual player value dashboard and research prototype.',
+  description: 'Real-data player rankings from event value and tracking counterfactuals.',
 };
 
 export default function RootLayout({

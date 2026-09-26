@@ -23,7 +23,7 @@ INCLUDED_RAW_TYPES = {
 
 @dataclass(frozen=True)
 class SBAction:
-    match_id: int
+    match_id: int | str
     index: int
     period: int
     minute: int
@@ -160,6 +160,98 @@ def _goal_geometry(x: float, y: float) -> tuple[float, float]:
     return distance, angle
 
 
+def shot_features(actions: list[SBAction]) -> np.ndarray:
+    """Provider-neutral shot geometry used to transfer World Cup xG to DFL."""
+    rows = []
+    for action in actions:
+        distance, angle = _goal_geometry(action.end_x / 120, action.end_y / 80)
+        rows.append((action.end_x / 120, action.end_y / 80, distance, angle))
+    return np.asarray(rows, dtype=np.float32).reshape((-1, 4))
+
+
+def _state_feature_row(match_actions: list[SBAction], index: int, lags: int = 3) -> np.ndarray:
+    """Encode one completed-action state in the provider-neutral event schema."""
+    current = match_actions[index]
+    width_per_lag = 9 + len(ACTION_TYPES)
+    row = np.zeros(4 + width_per_lag * lags, dtype=np.float32)
+    row[0] = min(current.minute, 130) / 130
+    row[1] = current.period / 5
+    row[2] = np.clip(current.score_for - current.score_against, -4, 4) / 4
+    row[3] = 1.0 if current.possession else 0.0
+    offset = 4
+    for lag in range(lags):
+        if index - lag < 0 or match_actions[index - lag].period != current.period:
+            offset += width_per_lag
+            continue
+        action = match_actions[index - lag]
+        sx, sy = action.start_x / 120, action.start_y / 80
+        ex, ey = action.end_x / 120, action.end_y / 80
+        distance, angle = _goal_geometry(ex, ey)
+        numeric = (
+            sx, sy, ex, ey, ex - sx, ey - sy, float(action.successful),
+            float(action.team_id == current.team_id), distance,
+        )
+        row[offset:offset + 9] = numeric
+        row[offset + 9 + TYPE_INDEX[action.action_type]] = 1.0
+        if action.action_type == "Shot":
+            row[offset + 8] = distance - angle
+        offset += width_per_lag
+    return row
+
+
+def action_state_features(actions: list[SBAction], lags: int = 3) -> tuple[np.ndarray, list[SBAction]]:
+    """Encode every action without requiring future labels.
+
+    This is the shared representation used both for StatsBomb training states
+    and synchronized DFL inference states. Coordinates must already be rotated
+    so the acting team attacks left-to-right and scaled to 120 by 80.
+    """
+    by_match: dict[int | str, list[SBAction]] = {}
+    for action in actions:
+        by_match.setdefault(action.match_id, []).append(action)
+    rows: list[np.ndarray] = []
+    ordered: list[SBAction] = []
+    for match_actions in by_match.values():
+        match_actions.sort(key=lambda action: action.index)
+        for index, action in enumerate(match_actions):
+            rows.append(_state_feature_row(match_actions, index, lags))
+            ordered.append(action)
+    width = 4 + (9 + len(ACTION_TYPES)) * lags
+    return np.asarray(rows, dtype=np.float32).reshape((-1, width)), ordered
+
+
+def event_model_values(actions: list[SBAction], score_model, concede_model, lags: int = 3) -> list[dict]:
+    """Return post-state probabilities and action deltas in the actor's frame.
+
+    The pre-state is the immediately preceding same-period state. If that
+    action belonged to the opponent, its net forecast is sign-flipped before
+    comparison. No future action or label is used during scoring.
+    """
+    features, ordered = action_state_features(actions, lags=lags)
+    if not ordered:
+        return []
+    score = score_model.predict_proba(features)[:, 1]
+    concede = concede_model.predict_proba(features)[:, 1]
+    output: list[dict] = []
+    previous_by_match: dict[int | str, tuple[SBAction, float]] = {}
+    for index, action in enumerate(ordered):
+        post_net = float(score[index] - concede[index])
+        previous = previous_by_match.get(action.match_id)
+        if previous is None or previous[0].period != action.period:
+            pre_net = 0.0
+        else:
+            pre_net = previous[1] if previous[0].team_id == action.team_id else -previous[1]
+        output.append({
+            "action": action,
+            "score_probability": float(score[index]),
+            "concede_probability": float(concede[index]),
+            "net_state_value": post_net,
+            "event_value": post_net - pre_net,
+        })
+        previous_by_match[action.match_id] = (action, post_net)
+    return output
+
+
 def state_features(actions: list[SBAction], horizon: int = 10, lags: int = 3) -> tuple[np.ndarray, np.ndarray, np.ndarray, list[SBAction]]:
     """Post-action forecasts from the completed current action.
 
@@ -168,10 +260,9 @@ def state_features(actions: list[SBAction], horizon: int = 10, lags: int = 3) ->
     period; end-of-period observations are therefore explicitly censored.
     Histories and labels never cross period boundaries.
     """
-    by_match: dict[int, list[SBAction]] = {}
+    by_match: dict[int | str, list[SBAction]] = {}
     for action in actions:
         by_match.setdefault(action.match_id, []).append(action)
-    width_per_lag = 9 + len(ACTION_TYPES)
     features: list[np.ndarray] = []
     scores: list[int] = []
     concedes: list[int] = []
@@ -182,28 +273,7 @@ def state_features(actions: list[SBAction], horizon: int = 10, lags: int = 3) ->
             future = match_actions[index + 1:index + 1 + horizon]
             if len(future) < horizon or any(action.period != current.period for action in future):
                 continue
-            row = np.zeros(4 + width_per_lag * lags, dtype=np.float32)
-            row[0] = min(current.minute, 130) / 130
-            row[1] = current.period / 5
-            row[2] = np.clip(current.score_for - current.score_against, -4, 4) / 4
-            row[3] = 1.0 if current.possession else 0.0
-            offset = 4
-            for lag in range(lags):
-                if index - lag < 0 or match_actions[index - lag].period != current.period:
-                    offset += width_per_lag
-                    continue
-                action = match_actions[index - lag]
-                sx, sy = action.start_x / 120, action.start_y / 80
-                ex, ey = action.end_x / 120, action.end_y / 80
-                distance, angle = _goal_geometry(ex, ey)
-                numeric = (sx, sy, ex, ey, ex - sx, ey - sy, float(action.successful), float(action.team_id == current.team_id), distance)
-                row[offset:offset + 9] = numeric
-                type_index = TYPE_INDEX[action.action_type]
-                row[offset + 9 + type_index] = 1.0
-                # Replace distance with angle for shots through a bounded interaction.
-                if action.action_type == "Shot":
-                    row[offset + 8] = distance - angle
-                offset += width_per_lag
+            row = _state_feature_row(match_actions, index, lags)
             scores.append(int(any(action.goal and action.team_id == current.team_id for action in future)))
             concedes.append(int(any(action.goal and action.team_id != current.team_id for action in future)))
             features.append(row)
