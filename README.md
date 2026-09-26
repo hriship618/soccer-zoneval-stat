@@ -1,47 +1,78 @@
-# ZCPV Lab
+# PIVOT — Player Impact via Outcomes and Tracking
 
-Zonal Counterfactual Player Value is a research prototype for soccer player valuation from continuous tracking and event data. It combines transparent on-ball action value with leave-one-out pitch-control attribution, then exposes both components in an interactive dashboard.
+PIVOT is a real-data soccer player rating that combines a transferable event-value model with synchronized tracking counterfactuals. The production rankings use 64 FIFA World Cup 2022 matches from StatsBomb Open Data and seven DFL/IDSSE matches with continuous tracking. Synthetic data is restricted to tests and never enters the dashboard artifact.
 
-## What is implemented
+## One-command pipeline
 
-- 4 × 3 tactical zone mapping and xT-style fixed-point value iteration
-- pass, carry, shot, take-on, interception, tackle, and regain valuation
-- reaction- and velocity-adjusted pitch control
-- exact leave-one-out attribution without materializing 22 extra control surfaces
-- CUDA kernel that reduces directly into player × zone aggregates
-- official DFL/IDSSE XML ingestion with synchronized event and tracking data
-- responsive dashboard with match ranking, player detail, timeline, spatial heatmap, comparison, and methodology views
+```bash
+python -m pip install -e .
+python -m scripts.run_pivot
+```
 
-The dashboard shows the real 1. FC Köln 1–2 FC Bayern München match from May 27, 2023. Player names, minutes, event actions, and tracking samples come from the DFL/IDSSE open-data release (CC BY 4.0). ZCPV values are this project's research-prototype outputs, not official DFL ratings. The 12-zone action model is calibrated across all seven downloaded release matches; only the Bayern match is shown in the interface.
+That command:
 
-## Run the dashboard
+1. chronologically splits the 64 World Cup matches into 38 train, 13 validation and 13 test matches;
+2. fits scoring, conceding, shot-xG and xT models using only the training partition;
+3. maps DFL actions into the same provider-neutral action representation;
+4. aligns those actions to real DFL tracking frames and computes 32 × 21 pitch control plus every active player's leave-one-out counterfactual;
+5. cross-fits the event/tracking fusion over seven leave-one-match-out DFL folds;
+6. evaluates the held-out probabilities and simple player/team baselines;
+7. writes real player-event contributions and final rankings under `data/processed/pivot/`;
+8. regenerates `app/pivot-rankings.generated.ts`, the dashboard's only rating source.
+
+Raw data is expected under `data/raw/statsbomb/` and `data/raw/dfl/`. Both raw and large processed artifacts are ignored by Git.
+
+## Mathematical definition
+
+For DFL event `e`, the frozen World Cup model supplies the actor-oriented net event change
+
+```text
+EV_e = [P_WC(score | post_e) - P_WC(concede | post_e)]
+     - [P_WC(score | pre_e)  - P_WC(concede | pre_e)].
+```
+
+Two logistic fusion models are fitted on six DFL matches at a time from the World Cup probability logit and actor-oriented, xT-weighted pitch-control advantage. Removing player `i` from the synchronized frame changes that fused net outcome probability by `SCF_i,e`, oriented so a useful attacking or defensive presence is positive. The player-event contribution is
+
+```text
+C_i,e = 1[i performed e] * EV_e + SCF_i,e.
+```
+
+Displayed match contributions are always produced by the fold that held that match out. The raw PIVOT rate remains contribution per 100 active event samples, but reliability does not treat those correlated frames as independent. Define `effective_matches = min(matches, minutes/90)` and `reliability = effective_matches/(effective_matches+4)`. A full single match therefore has reliability `0.20` regardless of frame count; five full matches reach only `0.556`. The rating uses the unshrunk group spread as its fixed scale so post-shrink standardization cannot restore discarded variance. Goalkeepers and outfield players have separate reference distributions and rankings. Qualification requires at least 45 tracked minutes.
+
+## Event model
+
+The target is whether the reference team scores or concedes within the next 10 actions. The current action is excluded, histories and labels never cross period boundaries, incomplete period-end windows are censored, and shootouts are removed. Features are the current action and two prior same-period actions: type, start/end coordinates, displacement, success, team relation, shot geometry, period, clock and score difference.
+
+World Cup event files are never assigned tracking features. A separate World Cup shot-geometry model transfers StatsBomb xG to DFL shots for the xT comparison without fabricating provider xG.
+
+## Tracking model
+
+DFL tracking supplies position and velocity at the event time. PIVOT computes reaction-adjusted time-to-intercept control on a 32 × 21 grid, collapses it to 12 tactical zones, weights those zones with the World Cup-trained xT surface, and calculates the exact control change when each active player is removed. These are the only tracking-derived production features.
+
+## Dashboard
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Run the analytics engine
+The UI contains separate compact outfield and goalkeeper tables showing only rank, player, team, matches, minutes and PIVOT rating. It contains no placeholder cards, synthetic ratings or generated methodology prose.
+
+## Validation and limitations
+
+Run software checks with:
 
 ```bash
-python -m pip install -e .
-python scripts/crunch_dfl.py --match J03WMX
+python -m pytest -q
+python -m compileall -q zcpv scripts
+npx tsc --noEmit
+npm run build
 ```
 
-## Recorded performance
-
-Recorded on the real Köln–Bayern match (17,071 live tracking frames at 5 Hz; 32 × 21 pitch-control grid) using an AMD Ryzen 9 5900X 12-Core Processor and an NVIDIA GeForce RTX 3080.
-
-| Path | Time | Speedup |
-| --- | ---: | ---: |
-| CPU naive | 47.32 s | 1.0× |
-| CPU optimized | 6.45 s | 7.3× |
-| CUDA (RTX 3080) | 47.5 ms | 135.7× vs. optimized CPU; ~1000× vs. naive |
-
-## Metric convention
-
-For successful passes and carries, value is `V(destination) - V(origin)`. Failed actions lose the origin value. Shots use a small logistic xG model. Same-zone take-ons use avoided possession-loss risk. Defensive regains receive the opponent threat prevented. For every tracking frame, a player's spatial value is the zone-value-weighted loss in their team's pitch control when that player is removed. Match totals are normalized per 90 minutes.
+Seven DFL matches are enough to demonstrate a leakage-safe, real-data end-to-end estimator, but not enough for a season-quality talent claim. World Cup-to-Bundesliga transfer can have competition/provider shift; pitch-control physics are assumptions; DFL outcomes are sparse; and the standardized rating is local to this player pool. The held-out ablation does not show a consistent predictive improvement from adding pitch control, so PIVOT treats it as attribution evidence rather than claiming superior prediction. Exact metrics and every fold coefficient are recorded in `pivot-report.json`.
 
 ## Data attribution
 
-Match data: Deutsche Fußball Liga (DFL), licensed under CC BY 4.0. Dataset methodology: Bassek, Rein, Weber & Memmert (2025), DOI `10.1038/s41597-025-04505-y`. Raw release files are intentionally excluded from Git; the processed Bayern-match dashboard payload is committed for a reproducible hosted demo.
+Tracking/event data: Deutsche Fußball Liga, DFL/IDSSE open data, CC BY 4.0. Dataset methodology: Bassek, Rein, Weber & Memmert (2025), DOI `10.1038/s41597-025-04505-y`.
+
+World Cup events and xG labels: StatsBomb Open Data. Published uses must identify StatsBomb as the source and follow the attribution requirements in the [official repository](https://github.com/hudl/open-data).

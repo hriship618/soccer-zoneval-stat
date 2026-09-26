@@ -67,7 +67,9 @@ def _event_rows(path: Path) -> list[dict]:
         play, shot, tackle = _descendant(event, 'Play'), _descendant(event, 'ShotAtGoal'), _descendant(event, 'TacklingGame')
         timestamp = datetime.fromisoformat(event.get('EventTime'))
         segment = 'secondHalf' if kickoffs.get('secondHalf') and timestamp >= kickoffs['secondHalf'] else 'firstHalf'
-        actor = shot or play or tackle
+        # ElementTree leaf elements are falsey even when present.  Selecting an
+        # actor with ``shot or play`` therefore drops valid leaf nodes.
+        actor = shot if shot is not None else play if play is not None else tackle
         if actor is None:
             continue
         kind = 'shot' if shot is not None else ('tackle' if tackle is not None else 'pass' if _descendant(event, 'Pass') is not None else 'play')
@@ -130,8 +132,8 @@ def learn_zone_values(event_paths: list[Path]) -> np.ndarray:
                 destination = int(grid.index(row['to_x'], row['to_y'])); transitions[origin, destination] += 1
             elif row['kind'] == 'pass':
                 turnovers[origin] += 1
-    # Weak empirical prior avoids zero-value zones in a seven-match sample.
-    shots += np.linspace(1, 4, 12); goals += np.linspace(.01, .35, 12)
+    # Fit only from observed events. Sparse zones may legitimately receive zero
+    # value; larger event-data priors should be learned and validated separately.
     return fit_zone_values(transitions, shots, goals, turnovers=turnovers)
 
 
@@ -159,7 +161,7 @@ def value_match_actions(path: Path, players: list[DFLPlayer], zone_values: np.nd
 
 
 def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
-    frames_by_segment: dict[str, set[int]] = defaultdict(set); live_keys = set(); possession_by_key = {}; stride = None; source_hz = 25.0
+    frames_by_segment: dict[str, set[int]] = defaultdict(set); live_keys = set(); possession_by_key = {}; timestamp_by_key = {}; stride = None; source_hz = 25.0
     for _, elem in ET.iterparse(path, events=('end',)):
         if elem.tag != 'FrameSet' or (elem.get('TeamId') or '').lower() != 'ball':
             continue
@@ -172,6 +174,7 @@ def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
             n = int(frame.get('N'))
             if n % stride == 0:
                 key = (segment, n); frames_by_segment[segment].add(n)
+                timestamp_by_key[key] = datetime.fromisoformat(frame.get('T')).timestamp()
                 if frame.get('BallStatus') == '1': live_keys.add(key)
                 possession_by_key[key] = int(float(frame.get('BallPossession') or 0))
         elem.clear()
@@ -187,20 +190,28 @@ def read_tracking(path: Path, metadata: dict, target_hz: int = 5):
                 idx = frame_index.get((segment, int(frame.get('N'))))
                 if idx is not None: positions[idx,pidx] = (float(frame.get('X'))+52.5, float(frame.get('Y'))+34.0)
         elem.clear()
-    velocities = np.zeros_like(positions); dt = 1.0 / target_hz
+    segments = np.array([key[0] for key in keys])
+    frame_numbers = np.array([key[1] for key in keys])
+    timestamps = np.array([timestamp_by_key[key] for key in keys], dtype=np.float64)
+    # Missing velocity is missing data, not a stationary player.  Do not
+    # differentiate across period boundaries or discontinuities in the feed.
+    velocities = np.full_like(positions, np.nan)
+    contiguous = (segments[1:] == segments[:-1]) & (frame_numbers[1:] > frame_numbers[:-1])
+    frame_delta = (frame_numbers[1:] - frame_numbers[:-1]) / source_hz
+    contiguous &= frame_delta <= max(0.5, 2.5 / target_hz)
     both = np.isfinite(positions[1:]).all(-1) & np.isfinite(positions[:-1]).all(-1)
-    diff = (positions[1:] - positions[:-1]) / dt; velocities[1:][both] = diff[both]
+    valid = both & contiguous[:, None]
+    diff = (positions[1:] - positions[:-1]) / np.maximum(frame_delta[:, None, None], 1e-6)
+    velocities[1:][valid] = diff[valid]
     teams = np.array([p.team_index for p in players], dtype=np.int8)
     active = np.isfinite(positions).all(-1)
     live = np.array([key in live_keys for key in keys], dtype=bool)
     possessions = np.array([possession_by_key.get(key, 0) for key in keys], dtype=np.int8)
-    segments = np.array([key[0] for key in keys])
-    frame_numbers = np.array([key[1] for key in keys])
-    return positions, velocities, teams, active, live, possessions, segments, frame_numbers, source_hz
+    return positions, velocities, teams, active, live, possessions, segments, frame_numbers, timestamps, source_hz
 
 
 def spatial_match(path: Path, event_path: Path, metadata: dict, zone_values: np.ndarray, target_hz: int = 5, chunk_size: int = 240) -> tuple[np.ndarray, np.ndarray, dict]:
-    positions, velocities, teams, active, live, possessions, segments, frame_numbers, source_hz = read_tracking(path, metadata, target_hz)
+    positions, velocities, teams, active, live, possessions, segments, frame_numbers, timestamps, source_hz = read_tracking(path, metadata, target_hz)
     players = metadata['players']; totals = np.zeros((len(players),12), dtype=np.float64); cfg = PitchControlConfig(grid_x=32, grid_y=21)
     direction = _attacking_directions(_event_rows(event_path)); team_ids = {p.team_index:p.team_id for p in players}
     for segment in ('firstHalf','secondHalf'):
@@ -245,4 +256,4 @@ def crunch_match(match_dir: Path, all_event_paths: list[Path], zone_values: np.n
         if minutes[i] < 1: continue
         action_per90 = action_totals[p.id] * 90/max(minutes[i],1)
         output_players.append({**asdict(p),'minutes':round(float(minutes[i]),1),'action':round(float(action_per90),4),'spatial':round(float(spatial_zones[i].sum()),4),'zones':[round(float(x),5) for x in spatial_zones[i]]})
-    return {'metadata':{k:v for k,v in metadata.items() if k!='players'},'provenance':{'source':'DFL / IDSSE','license':'CC BY 4.0','doi':'10.1038/s41597-025-04505-y','computed':True,**quality},'zone_values':zone_values.tolist(),'players':output_players,'actions':actions}
+    return {'metadata':{k:v for k,v in metadata.items() if k!='players'},'provenance':{'source':'DFL / IDSSE','license':'CC BY 4.0','doi':'10.1038/s41597-025-04505-y','computed':True,'model_version':'legacy_v0','scientific_status':'descriptive_match_demo',**quality},'zone_values':zone_values.tolist(),'players':output_players,'actions':actions}

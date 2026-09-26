@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ZCPV Lab — Spatial Soccer Analytics',
-  description: 'Zonal counterfactual player value dashboard and research prototype.',
+  title: 'PIVOT — Player Impact via Outcomes and Tracking',
+  description: 'Real-data player rankings from event value and tracking counterfactuals.',
 };
 
 export default function RootLayout({

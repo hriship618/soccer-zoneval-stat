@@ -1,4 +1,4 @@
-"""Zonal Counterfactual Player Value (ZCPV)."""
+"""PIVOT research engine (the internal ``zcpv`` package name is retained for compatibility)."""
 
 from .actions import Action, value_action
 from .pitch_control import PitchControlConfig, leave_one_out_zone_values

@@ -1,0 +1,27 @@
+{
+  "model_version": "pivot-v1-research",
+  "random_seed": 618,
+  "sample_hz": 1.0,
+  "target_horizon_seconds": 15.0,
+  "comparison_horizons_seconds": [10.0, 20.0],
+  "pass_ball_speed_mps": 14.0,
+  "receiver_speed_mps": 7.0,
+  "interception_margin_seconds": 0.25,
+  "pressure_radius_m": 3.0,
+  "pressure_merge_gap_seconds": 1.0,
+  "pressure_outcome_seconds": 3.0,
+  "transition_window_seconds": 5.0,
+  "recency_half_life_matches": 8.0,
+  "shrinkage_kappa": 10.0,
+  "min_positive_windows": 25,
+  "impact_beta_l2": 10.0,
+  "impact_player_l2": 25.0,
+  "train_cutoff": null,
+  "validation_cutoff": null,
+  "features": [
+    "ball_x", "ball_y", "ball_speed", "team_width", "team_depth",
+    "opponent_width", "opponent_depth", "nearest_opponent",
+    "players_behind_ball", "numerical_advantage", "score_difference", "set_piece",
+    "own_goalkeeper_x", "opponent_goalkeeper_x", "zone_control"
+  ]
+}
