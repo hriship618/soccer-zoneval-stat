@@ -32,7 +32,9 @@ class ReceiverOption:
     interception_margin_s: float
     nearest_pressure_m: float
     destination_angle_rad: float
+    onside: bool
     feasible: bool
+    ineligibility_reason: str | None = None
     heuristic: bool = True
 
 
@@ -50,15 +52,26 @@ def candidate_receivers(
     reference_team_id: str,
     players: Sequence[PlayerState],
     config: ZCPVConfig = ZCPVConfig(),
+    *,
+    attacking_direction: int = 1,
+    restart_context: str = "open_play",
+    pitch_length_m: float = 105.0,
 ) -> list[ReceiverOption]:
     """Ground-pass feasibility using receiver and opponent arrival times.
 
     These outputs are documented heuristics, not calibrated completion
     probabilities.
     """
+    if attacking_direction not in {-1, 1}:
+        raise ValueError("attacking_direction must be -1 or 1")
     bx, by = ball_xy
+    attack_x = lambda x: x if attacking_direction == 1 else pitch_length_m - x
+    ball_attack_x = attack_x(bx)
     teammates = [p for p in players if p.active and p.team_id == reference_team_id and p.player_id != possessor_id]
     opponents = [p for p in players if p.active and p.team_id != reference_team_id]
+    opponent_attack_x = sorted((attack_x(player.x) for player in opponents), reverse=True)
+    second_last_opponent = opponent_attack_x[1] if len(opponent_attack_x) >= 2 else pitch_length_m
+    offside_exempt = restart_context in {"goal_kick", "throw_in", "corner_kick"}
     options = []
     for receiver in teammates:
         distance = hypot(receiver.x - bx, receiver.y - by)
@@ -76,12 +89,20 @@ def candidate_receivers(
         opponent_margin = min(intercept_times, default=float("inf"))
         nearest_pressure = min(pressures, default=float("inf"))
         margin = opponent_margin - config.interception_margin_seconds
+        receiver_attack_x = attack_x(receiver.x)
+        onside = offside_exempt or not (
+            receiver_attack_x > pitch_length_m / 2
+            and receiver_attack_x > ball_attack_x + 1e-6
+            and receiver_attack_x > second_last_opponent + 1e-6
+        )
         options.append(ReceiverOption(
             player_id=receiver.player_id, distance_m=distance, ball_arrival_s=ball_arrival,
             receiver_arrival_s=receiver_arrival, opponent_intercept_s=opponent_margin + ball_arrival,
             interception_margin_s=margin, nearest_pressure_m=nearest_pressure,
             destination_angle_rad=atan2(projected_y - by, projected_x - bx),
-            feasible=receiver_arrival <= ball_arrival and margin > 0.0,
+            onside=onside,
+            feasible=onside and receiver_arrival <= ball_arrival and margin > 0.0,
+            ineligibility_reason=None if onside else "offside",
         ))
     return options
 
@@ -134,18 +155,22 @@ def pressure_measurements(
     timestamps: Sequence[float],
     carrier_positions: Sequence[tuple[float, float]],
     defender_positions: Sequence[dict[str, tuple[float, float, float, float]]],
+    carrier_velocities: Sequence[tuple[float, float]] | None = None,
     radius_m: float = 3.0,
     merge_gap_s: float = 1.0,
 ) -> list[dict]:
     """Build contiguous close-and-closing pressure episodes."""
     active: dict[str, dict] = {}
     complete: list[dict] = []
-    for timestamp, carrier, defenders in zip(timestamps, carrier_positions, defender_positions):
+    if carrier_velocities is None:
+        carrier_velocities = [(0.0, 0.0)] * len(timestamps)
+    for timestamp, carrier, carrier_velocity, defenders in zip(timestamps, carrier_positions, carrier_velocities, defender_positions):
         seen = set()
         for defender_id, (x, y, vx, vy) in defenders.items():
             dx, dy = carrier[0] - x, carrier[1] - y
             distance = hypot(dx, dy)
-            closing = 0.0 if distance == 0 else (vx * dx + vy * dy) / distance
+            relative_vx, relative_vy = vx - carrier_velocity[0], vy - carrier_velocity[1]
+            closing = 0.0 if distance == 0 else (relative_vx * dx + relative_vy * dy) / distance
             if distance <= radius_m and closing > 0:
                 seen.add(defender_id)
                 episode = active.get(defender_id)
@@ -172,9 +197,14 @@ def lane_coverage(
     defenders: Sequence[PlayerState],
     lane_radius_m: float = 1.5,
 ) -> dict[str, dict[str, float]]:
-    """Split each covered lane equally among qualifying defenders."""
-    totals = {defender.player_id: {"covered_lanes": 0.0, "threat_exposure": 0.0} for defender in defenders}
+    """Report raw and heuristic danger-weighted lane coverage separately.
+
+    Destination danger is the transparent squared attacking-x fraction. It is
+    a spatial heuristic, not a calibrated scoring probability.
+    """
+    totals = {defender.player_id: {"raw_covered_lanes": 0.0, "danger_weighted_coverage": 0.0, "threat_exposure": 0.0, "danger_exposure": 0.0} for defender in defenders}
     for receiver in receivers:
+        danger = max(0.0, min(1.0, receiver.x / 105.0)) ** 2
         qualifiers = []
         for defender in defenders:
             distance, fraction = _distance_to_segment(defender.x, defender.y, *ball_xy, receiver.x, receiver.y)
@@ -182,8 +212,10 @@ def lane_coverage(
                 qualifiers.append(defender)
         for defender in defenders:
             totals[defender.player_id]["threat_exposure"] += 1.0
+            totals[defender.player_id]["danger_exposure"] += danger
         for defender in qualifiers:
-            totals[defender.player_id]["covered_lanes"] += 1.0 / len(qualifiers)
+            totals[defender.player_id]["raw_covered_lanes"] += 1.0 / len(qualifiers)
+            totals[defender.player_id]["danger_weighted_coverage"] += danger / len(qualifiers)
     return totals
 
 
@@ -202,3 +234,51 @@ def transition_protection(
             "ball_distance_m": hypot(defender.x - ball_xy[0], defender.y - ball_xy[1]),
         }
     return output
+
+
+@dataclass(frozen=True)
+class SpatialSnapshot:
+    period: int
+    timestamp_s: float
+    possession_team_id: str | None
+    live_play: bool
+    ball_xy: tuple[float, float]
+    players: tuple[PlayerState, ...]
+
+
+def transition_protection_episodes(snapshots: Sequence[SpatialSnapshot], window_s: float = 5.0) -> list[dict]:
+    """Measure the defending team after turnovers with explicit stop reasons."""
+    episodes: list[dict] = []
+    for index in range(1, len(snapshots)):
+        prior, start = snapshots[index - 1], snapshots[index]
+        if not prior.live_play or not start.live_play or not prior.possession_team_id or not start.possession_team_id or prior.possession_team_id == start.possession_team_id:
+            continue
+        defending_team = prior.possession_team_id
+        attacking_team = start.possession_team_id
+        totals: dict[str, dict[str, float]] = {}
+        stop_reason = "window_end"
+        end_s = start.timestamp_s
+        for snapshot in snapshots[index:]:
+            if snapshot.period != start.period:
+                stop_reason = "period_end"; break
+            if not snapshot.live_play:
+                stop_reason = "interruption"; break
+            if snapshot.possession_team_id != attacking_team:
+                stop_reason = "possession_change"; break
+            if snapshot.timestamp_s - start.timestamp_s > window_s + 1e-9:
+                break
+            defenders = [player for player in snapshot.players if player.active and player.team_id == defending_team]
+            threats = [player for player in snapshot.players if player.active and player.team_id == attacking_team]
+            measurements = transition_protection(snapshot.ball_xy, defenders, threats)
+            for player_id, values in measurements.items():
+                aggregate = totals.setdefault(player_id, {name: 0.0 for name in values} | {"samples": 0.0})
+                for name, value in values.items():
+                    aggregate[name] += value
+                aggregate["samples"] += 1.0
+            end_s = snapshot.timestamp_s
+        episodes.append({
+            "period": start.period, "start_s": start.timestamp_s, "end_s": end_s,
+            "defending_team_id": defending_team, "attacking_team_id": attacking_team,
+            "stop_reason": stop_reason, "players": totals,
+        })
+    return episodes

@@ -38,7 +38,7 @@ export function Dashboard() {
             <TabsTrigger value="study">Match study</TabsTrigger>
             <TabsTrigger value="compare">Compare players</TabsTrigger>
             <TabsTrigger value="validation">Model validation</TabsTrigger>
-            <TabsTrigger value="research">ZCPV v1 research</TabsTrigger>
+            <TabsTrigger value="research">PIVOT v1 research</TabsTrigger>
             <TabsTrigger value="method">Method &amp; limits</TabsTrigger>
           </TabsList>
           <TabsContent value="study" className="mt-5">
@@ -52,7 +52,7 @@ export function Dashboard() {
           <TabsContent value="method" className="mt-5"><MethodView /></TabsContent>
         </Tabs>
         <footer className="mt-8 flex flex-wrap items-start justify-between gap-3 border-t border-border pt-5 text-xs leading-relaxed text-muted-foreground">
-          <p>DFL / IDSSE data · CC BY 4.0 · ZCPV values are experimental and are not official DFL ratings.</p>
+          <p>DFL / IDSSE data · CC BY 4.0 · PIVOT is experimental and is not an official DFL rating.</p>
           <a className="link" href={`https://doi.org/${provenance.doi}`}>Dataset methodology <ArrowRight size={12} /></a>
         </footer>
       </div>
@@ -62,7 +62,7 @@ export function Dashboard() {
 
 function Header() {
   return <header className="border-b border-border bg-card"><div className="mx-auto flex h-16 max-w-[1560px] items-center justify-between px-4 sm:px-7 lg:px-10">
-    <div className="flex items-center gap-3"><span className="brand-mark">Z</span><div><p className="text-sm font-semibold tracking-[-.01em]">ZCPV Research Lab</p><p className="text-[11px] text-muted-foreground">Counterfactual football analysis</p></div></div>
+    <div className="flex items-center gap-3"><span className="brand-mark">P</span><div><p className="text-sm font-semibold tracking-[-.01em]">PIVOT Research Lab</p><p className="text-[11px] text-muted-foreground">Player Impact via Outcomes and Tracking</p></div></div>
     <div className="status"><span /> Verified public match data</div>
   </div></header>;
 }
@@ -133,9 +133,10 @@ function ValidationView() {
       </div>
       <div className="split-strip">
         <div style={{width:`${dataset.train_matches / dataset.matches * 100}%`}}><b>{dataset.train_matches} matches</b><span>Training · {dataset.train_actions.toLocaleString()} actions</span></div>
+        <div className="validation" style={{width:`${dataset.validation_matches / dataset.matches * 100}%`}}><b>{dataset.validation_matches} matches</b><span>Validation · {dataset.validation_actions.toLocaleString()} actions</span></div>
         <div className="test"><b>{dataset.test_matches} matches</b><span>Held out · {dataset.test_actions.toLocaleString()} actions</span></div>
       </div>
-      <p className="mt-3 text-xs text-muted-foreground">Chronological split · test period begins {dataset.test_start} · no held-out match is used to fit xT or VAEP.</p>
+      <p className="mt-3 text-xs text-muted-foreground">Chronological match-disjoint split · validation begins {dataset.validation_start} · test begins {dataset.test_start}.</p>
     </section>
 
     <div className="validation-grid">
@@ -152,14 +153,14 @@ function ResearchV1View() {
   const stages = [
     ['Canonical DFL ingestion', 'Implemented', 'Events, lineups, sampled tracking, checksums and per-match quality reports'],
     ['15-second npxG targets', 'Blocked', 'The DFL sample does not provide xG; the pipeline refuses to substitute the legacy formula'],
-    ['Spatial player evidence', 'Implemented', 'Receiving feasibility, pressure episodes, lane coverage and transition-protection interfaces'],
-    ['Offensive / defensive impact', 'Ready', 'Duration-weighted regularized estimator with lagged profiles and lineup-only baseline support'],
-    ['Published player ratings', 'Unavailable', 'Seven matches cannot identify credible out-of-time player effects'],
+    ['Spatial player evidence', 'Connected', 'Real 1 Hz tracking produces receiving, relative-pressure, lane-coverage, transition and exposure summaries'],
+    ['O-PIVOT / D-PIVOT impact', 'Executable', 'Duration-weighted estimator is segmentation invariant and uses strictly historical profiles when supplied'],
+    ['Published player ratings', 'Unavailable', 'The DFL shots lack xG and all seven matches are simultaneous, leaving no historical profile window'],
   ];
   return <div className="space-y-5">
     <section className="panel p-5 sm:p-7">
       <div className="flex flex-wrap items-start justify-between gap-5">
-        <div className="max-w-3xl"><p className="eyebrow">Research pipeline · {researchV1.model_version}</p><h2 className="mt-2 text-2xl font-semibold">Built to fail honestly when evidence is insufficient</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">V1 is specified as offensive and defensive non-penalty xG impact per 90. This dataset can exercise ingestion and feature engineering, but it cannot yet support a defensible rating table.</p></div>
+        <div className="max-w-3xl"><p className="eyebrow">Research pipeline · {researchV1.model_version}</p><h2 className="mt-2 text-2xl font-semibold">Built to fail honestly when evidence is insufficient</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">V1 targets O-PIVOT, D-PIVOT, and net non-penalty xG impact per 90. This dataset can exercise ingestion and feature engineering, but it cannot yet support a defensible rating table.</p></div>
         <span className="sample-tag">{researchV1.status.replace('_', ' ')}</span>
       </div>
       <div className="mt-6 rounded-xl border border-border bg-muted/30 p-4"><p className="text-sm font-semibold">Why the ratings are blank</p><p className="mt-1 text-sm leading-6 text-muted-foreground">{researchV1.reason}</p></div>

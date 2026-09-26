@@ -11,7 +11,7 @@ from typing import Any
 class ZCPVConfig:
     """Single versioned configuration for the v1 research pipeline."""
 
-    model_version: str = "zcpv-v1-research"
+    model_version: str = "pivot-v1-research"
     random_seed: int = 618
     sample_hz: float = 1.0
     target_horizon_seconds: float = 15.0

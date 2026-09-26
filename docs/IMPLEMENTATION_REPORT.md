@@ -1,6 +1,6 @@
-# ZCPV v1 implementation report
+# PIVOT v1 implementation report
 
-## Implemented
+## Working stages connected to real data
 
 - Versioned configuration, canonical dataclasses and schema manifest.
 - DFL adapter with explicit XML-node selection, raw/parsed counts, exclusion reasons, stable identifiers, provider direction provenance, source timestamps and sampled tracking.
@@ -14,15 +14,23 @@
 - Chronological/expanding match splits, match aggregation, regression metrics and refitted match-block bootstrap utility.
 - Honest versioned export and dashboard research view. The old match demo is visibly labeled `legacy_v0`.
 
+The stage runner now passes canonical DFL events, tracking, and lineups into synchronized 1 Hz observations; generates event-only and tracking-augmented feature sets on identical samples; aggregates real player-match exposures; creates strictly historical profiles; constructs lineup impact rows when xG and profiles exist; evaluates held-out rows; and exports fitted ratings only when both fitting and evaluation succeed. Each blocked stage inspects its artifacts and reports the concrete missing input rather than returning an unconditional placeholder.
+
+## Standalone helpers
+
+- Match-disjoint chronological and expanding-window split utilities.
+- Match-block bootstrap and match-aggregation utilities. These are implemented and tested as building blocks but are not reported as completed validation on the seven-match DFL sample.
+- CUDA pitch-control acceleration remains a compute path for the legacy prototype, not a requirement or accuracy claim for PIVOT v1.
+
 ## Learned versus heuristic components
 
-- Learned when adequate real inputs exist: shot occurrence, conditional future npxG, context baselines, profile coefficients and player residuals.
-- Heuristic: assumed ground-pass speed, player arrival speed, interception margin, pressure distance/closing threshold, lane radius and transition window. These remain configurable and must receive sensitivity analysis.
+- Learned when adequate real inputs exist: shot occurrence, conditional future npxG, training-only context baselines, profile coefficients and player residuals.
+- Heuristic: assumed ground-pass speed, player arrival speed, interception margin, pressure distance/relative-closing threshold, lane radius, squared attacking-x danger weight and transition window. Raw and danger-weighted lane coverage are stored separately. These remain configurable and require sensitivity analysis.
 - Legacy only: the hand-written shot xG and defensive zone valuation in the original demo. They are never v1 training targets.
 
 ## Current data limitation
 
-The local DFL/IDSSE release contains seven complete matches with tracking and events but no provider xG. It is suitable for ingestion audits and leave-one-match-out exploratory diagnostics. It is not sufficient for a credible chronological player-impact fit. The v1 state, profile, impact and evaluation stages therefore report `insufficient_data`; the dashboard shows no v1 player ratings.
+The local DFL/IDSSE release contains seven simultaneous final-matchday matches with tracking and events but no provider xG. Real feature extraction works, but the sample has no strictly earlier dates for profiles and no validated npxG targets. It is not sufficient for a credible chronological player-impact fit. The dashboard therefore shows no PIVOT player ratings.
 
 The exact remaining inputs for meaningful training are:
 
@@ -44,11 +52,18 @@ npm run lint
 npm run build
 ```
 
+## Validation status
+
+The corrected World Cup event baseline has been retrained on a 38/13/13 chronological train/validation/test split. This validates only that event forecasting code outperforms or fails against its stated baselines on those partitions; it does not validate PIVOT player impact. PIVOT impact validation has not been performed because the DFL inputs lack xG and chronological history.
+
 ## Verification recorded on September 25, 2026
 
-- `python -m pytest -q`: 12 tests passed.
+- `python -m pytest -q`: 22 tests passed, including executable artifact-stage fixtures.
 - `python -m compileall -q zcpv scripts`: passed.
-- `python -m scripts.train_zcpv all`: all audit/infrastructure stages completed; scientific fit stages returned the expected `insufficient_data` status.
+- `python -m scripts.train_zcpv features --match J03WMX`: processed 151,842 real tracking rows into 3,422 live observations, 32 player-match summaries, 346 turnover episodes, and 23 lineup segments.
+- Real stage diagnostics: 222 shot-containing windows lack xG; 0 positive labeled windows remain; one processed match supplies no historical profile; 20 non-penalty shots lack xG for impact fitting.
+- `python -m scripts.train_zcpv smoke`: completed a clearly labeled synthetic end-to-end fit and held-out evaluation; no fixture rating is exported to the dashboard.
+- `python -m scripts.train_baselines`: regenerated the corrected event report using 38 training, 13 validation, and 13 test matches.
 - Seven-match audit: 10,498 raw events and 6,371 parsed canonical events. The Köln–Bayern match reconciled the previously observed 951 passes, 21 shots, zero parsed carries and explicit reasons for every other exclusion.
 - Köln–Bayern tracking audit at 1 Hz: 151,842 canonical rows, 145,942 player velocity rows and no player velocity above 14 m/s; period/gap boundaries do not produce velocities.
 - `npx tsc --noEmit` and `npx oxlint app/dashboard.tsx`: passed.

@@ -9,7 +9,7 @@ import joblib
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 
-from zcpv.statsbomb import fit_xt, load_competition, split_match_ids, state_features, xt_action_value
+from zcpv.statsbomb import fit_xt, load_competition, split_match_ids_three_way, state_features, xt_action_value
 
 
 def expected_calibration_error(labels: np.ndarray, probabilities: np.ndarray, bins: int = 10) -> float:
@@ -56,15 +56,18 @@ def main() -> None:
     args = parser.parse_args()
 
     actions, matches = load_competition(args.data)
-    train_ids, test_ids, test_start = split_match_ids(matches)
+    train_ids, validation_ids, test_ids, validation_start, test_start = split_match_ids_three_way(matches)
     features, score_labels, concede_labels, ordered = state_features(actions)
     train_mask = np.asarray([action.match_id in train_ids for action in ordered])
+    validation_mask = np.asarray([action.match_id in validation_ids for action in ordered])
     test_mask = np.asarray([action.match_id in test_ids for action in ordered])
 
     score_model = train_model(features[train_mask], score_labels[train_mask])
     concede_model = train_model(features[train_mask], concede_labels[train_mask])
     score_probability = score_model.predict_proba(features[test_mask])[:, 1]
     concede_probability = concede_model.predict_proba(features[test_mask])[:, 1]
+    validation_score_probability = score_model.predict_proba(features[validation_mask])[:, 1]
+    validation_concede_probability = concede_model.predict_proba(features[validation_mask])[:, 1]
 
     train_actions = [action for action in actions if action.match_id in train_ids]
     test_actions = [action for action in actions if action.match_id in test_ids]
@@ -77,16 +80,23 @@ def main() -> None:
             "repository": "https://github.com/hudl/open-data",
             "matches": len(matches),
             "train_matches": len(train_ids),
+            "validation_matches": len(validation_ids),
             "test_matches": len(test_ids),
             "train_actions": int(train_mask.sum()),
+            "validation_actions": int(validation_mask.sum()),
             "test_actions": int(test_mask.sum()),
+            "validation_start": validation_start,
             "test_start": test_start,
             "split": "chronological by match date",
         },
         "vaep": {
-            "state": "current action plus two previous actions",
-            "horizon": "goal scored or conceded within 10 actions",
+            "state": "post-action forecast from current action plus two prior same-period actions",
+            "horizon": "goal scored or conceded in the next 10 same-period actions; current action excluded; end-of-period windows censored",
             "estimator": "histogram gradient boosting",
+            "validation": {
+                "score": metrics(score_labels[validation_mask], validation_score_probability, float(score_labels[train_mask].mean())),
+                "concede": metrics(concede_labels[validation_mask], validation_concede_probability, float(concede_labels[train_mask].mean())),
+            },
             "score": metrics(score_labels[test_mask], score_probability, float(score_labels[train_mask].mean())),
             "concede": metrics(concede_labels[test_mask], concede_probability, float(concede_labels[train_mask].mean())),
         },
@@ -99,8 +109,9 @@ def main() -> None:
         },
         "notes": [
             "StatsBomb events train the event baselines; DFL tracking remains a separate evaluation source.",
-            "The held-out matches are never used to fit either probability model or the xT grid.",
-            "These are baseline validation metrics, not evidence that ZCPV is already superior.",
+            "Validation and test matches are disjoint and never fit either probability model or the xT grid.",
+            "Penalty shootouts are excluded from ordinary-play modeling.",
+            "These are baseline validation metrics, not evidence that PIVOT is already superior.",
         ],
     }
     serialized = json.dumps(report, ensure_ascii=False, indent=2)

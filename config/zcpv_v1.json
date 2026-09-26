@@ -1,5 +1,5 @@
 {
-  "model_version": "zcpv-v1-research",
+  "model_version": "pivot-v1-research",
   "random_seed": 618,
   "sample_hz": 1.0,
   "target_horizon_seconds": 15.0,

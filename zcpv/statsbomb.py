@@ -80,6 +80,10 @@ def load_match(path: Path) -> list[SBAction]:
     scores: dict[int, int] = {}
     actions: list[SBAction] = []
     for event in events:
+        period = int(event.get("period", 1))
+        # Period 5 is a penalty shootout, not ordinary match play.
+        if period > 4:
+            continue
         start = _location(event)
         team = event.get("team") or {}
         raw_type = (event.get("type") or {}).get("name", "Other")
@@ -97,7 +101,7 @@ def load_match(path: Path) -> list[SBAction]:
         actions.append(SBAction(
             match_id=match_id,
             index=int(event.get("index", len(actions))),
-            period=int(event.get("period", 1)),
+            period=period,
             minute=int(event.get("minute", 0)),
             second=int(event.get("second", 0)),
             possession=int(event.get("possession", 0)),
@@ -131,6 +135,24 @@ def split_match_ids(matches: list[dict], test_fraction: float = 0.2) -> tuple[se
     return {int(row["match_id"]) for row in train}, {int(row["match_id"]) for row in test}, test[0]["match_date"]
 
 
+def split_match_ids_three_way(matches: list[dict], validation_fraction: float = 0.2, test_fraction: float = 0.2) -> tuple[set[int], set[int], set[int], str, str]:
+    """Chronological, match-disjoint train/validation/test split."""
+    ordered = sorted(matches, key=lambda row: (row["match_date"], row["kick_off"], row["match_id"]))
+    validation_count = max(1, round(len(ordered) * validation_fraction))
+    test_count = max(1, round(len(ordered) * test_fraction))
+    if validation_count + test_count >= len(ordered):
+        raise ValueError("not enough matches for three non-empty partitions")
+    train = ordered[:-(validation_count + test_count)]
+    validation = ordered[-(validation_count + test_count):-test_count]
+    test = ordered[-test_count:]
+    return (
+        {int(row["match_id"]) for row in train},
+        {int(row["match_id"]) for row in validation},
+        {int(row["match_id"]) for row in test},
+        validation[0]["match_date"], test[0]["match_date"],
+    )
+
+
 def _goal_geometry(x: float, y: float) -> tuple[float, float]:
     dx, dy = max(0.001, 1.0 - x), abs(0.5 - y)
     distance = sqrt(dx * dx + dy * dy)
@@ -139,6 +161,13 @@ def _goal_geometry(x: float, y: float) -> tuple[float, float]:
 
 
 def state_features(actions: list[SBAction], horizon: int = 10, lags: int = 3) -> tuple[np.ndarray, np.ndarray, np.ndarray, list[SBAction]]:
+    """Post-action forecasts from the completed current action.
+
+    Features include the current action endpoint. Labels begin strictly with
+    the next action and require ``horizon`` subsequent actions in the same
+    period; end-of-period observations are therefore explicitly censored.
+    Histories and labels never cross period boundaries.
+    """
     by_match: dict[int, list[SBAction]] = {}
     for action in actions:
         by_match.setdefault(action.match_id, []).append(action)
@@ -150,6 +179,9 @@ def state_features(actions: list[SBAction], horizon: int = 10, lags: int = 3) ->
     for match_actions in by_match.values():
         match_actions.sort(key=lambda action: action.index)
         for index, current in enumerate(match_actions):
+            future = match_actions[index + 1:index + 1 + horizon]
+            if len(future) < horizon or any(action.period != current.period for action in future):
+                continue
             row = np.zeros(4 + width_per_lag * lags, dtype=np.float32)
             row[0] = min(current.minute, 130) / 130
             row[1] = current.period / 5
@@ -157,7 +189,7 @@ def state_features(actions: list[SBAction], horizon: int = 10, lags: int = 3) ->
             row[3] = 1.0 if current.possession else 0.0
             offset = 4
             for lag in range(lags):
-                if index - lag < 0:
+                if index - lag < 0 or match_actions[index - lag].period != current.period:
                     offset += width_per_lag
                     continue
                 action = match_actions[index - lag]
@@ -172,7 +204,6 @@ def state_features(actions: list[SBAction], horizon: int = 10, lags: int = 3) ->
                 if action.action_type == "Shot":
                     row[offset + 8] = distance - angle
                 offset += width_per_lag
-            future = match_actions[index:min(len(match_actions), index + horizon)]
             scores.append(int(any(action.goal and action.team_id == current.team_id for action in future)))
             concedes.append(int(any(action.goal and action.team_id != current.team_id for action in future)))
             features.append(row)

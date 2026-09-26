@@ -5,9 +5,6 @@ from datetime import date
 from math import exp, log
 from typing import Iterable, Mapping, Sequence
 
-import numpy as np
-
-
 @dataclass(frozen=True)
 class PlayerMatchMeasurement:
     player_id: str
@@ -52,10 +49,14 @@ def build_lagged_profiles(
         role: {name: (sum(v * max(w, 1e-9) for v, w in values) / sum(max(w, 1e-9) for _, w in values) if values else 0.0) for name, values in features.items()}
         for role, features in roles.items()
     }
-    global_mean = {
-        name: float(np.mean([float(row.features[name]) for row in eligible if row.features.get(name) is not None])) if any(row.features.get(name) is not None for row in eligible) else 0.0
-        for name in feature_names
-    }
+    global_mean = {}
+    for name in feature_names:
+        available = [
+            (float(row.features[name]), max(0.0, float(row.exposures.get(name, 0.0))))
+            for row in eligible if row.features.get(name) is not None
+        ]
+        total = sum(weight for _, weight in available)
+        global_mean[name] = sum(value * weight for value, weight in available) / total if total > 0 else 0.0
     by_player: dict[str, list[PlayerMatchMeasurement]] = {}
     for row in eligible:
         by_player.setdefault(row.player_id, []).append(row)

@@ -226,6 +226,11 @@ class DFLAdapter:
             outcome = None
             if actor_node is not None:
                 outcome = actor_node.get("Evaluation") or actor_node.get("WinnerResult")
+                if kind == "restart":
+                    outcome = {
+                        "GoalKick": "goal_kick", "ThrowIn": "throw_in", "CornerKick": "corner_kick",
+                        "FreeKick": "free_kick", "KickOff": "kickoff",
+                    }.get(primary_tag, "restart")
                 if kind == "card":
                     outcome = actor_node.get("CardColor") or actor_node.get("CardRating")
                     if outcome and outcome.lower() in {"red", "yellowred", "yellow-red"}:

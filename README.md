@@ -1,9 +1,9 @@
-# ZCPV Lab
+# PIVOT — Player Impact via Outcomes and Tracking
 
-Zonal Counterfactual Player Value is a research prototype for tracking-informed soccer impact analysis. The repository now keeps two explicitly separate paths:
+PIVOT is a research prototype for tracking-informed soccer impact analysis. Its v1 target is offensive (O-PIVOT), defensive (D-PIVOT), and net non-penalty xG impact per 90—not a validated measure of total player value. The repository keeps two explicitly separate paths:
 
 - `legacy_v0`: the original single-match action plus pitch-control demo, retained unchanged in purpose.
-- `zcpv-v1-research`: an auditable pipeline toward offensive and defensive non-penalty xG impact per 90. It refuses to publish ratings when target or sample requirements are not met.
+- `pivot-v1-research`: the auditable outcome-and-tracking pipeline. It refuses to publish ratings when target or sample requirements are not met.
 
 ## What is implemented
 
@@ -73,7 +73,7 @@ python scripts/fetch_statsbomb.py
 python -m scripts.train_baselines
 ```
 
-The current split trains on 51 chronologically earlier matches and evaluates on 13 later matches beginning December 4, 2022. The held-out matches never fit the xT grid or either VAEP-style probability model. The two fitted gradient-boosting models and xT grid are written to `data/processed/models/`. Running `crunch_dfl.py` afterward automatically uses that trained xT grid for the displayed DFL score; if it is absent, the script explicitly falls back to the seven-match DFL fit.
+The corrected post-action baseline uses 38 chronological training matches, 13 validation matches, and 13 final test matches. Labels begin after the completed current action, histories and targets stay inside a period, end-of-period windows are censored, and shootouts are excluded. None of the validation or test matches fit the xT grid or probability models. Fitted artifacts are written to `data/processed/models/`.
 
 ## Recorded performance
 

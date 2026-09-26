@@ -5,36 +5,61 @@ const modelReport = {
     "provider": "StatsBomb Open Data",
     "repository": "https://github.com/hudl/open-data",
     "matches": 64,
-    "train_matches": 51,
+    "train_matches": 38,
+    "validation_matches": 13,
     "test_matches": 13,
-    "train_actions": 116193,
-    "test_actions": 32929,
+    "train_actions": 85314,
+    "validation_actions": 29859,
+    "test_actions": 32487,
+    "validation_start": "2022-11-30",
     "test_start": "2022-12-04",
     "split": "chronological by match date"
   },
   "vaep": {
-    "state": "current action plus two previous actions",
-    "horizon": "goal scored or conceded within 10 actions",
+    "state": "post-action forecast from current action plus two prior same-period actions",
+    "horizon": "goal scored or conceded in the next 10 same-period actions; current action excluded; end-of-period windows censored",
     "estimator": "histogram gradient boosting",
+    "validation": {
+      "score": {
+        "events": 29859,
+        "positive_rate": 0.00914,
+        "brier": 0.00906,
+        "baseline_brier": 0.00906,
+        "brier_improvement_pct": 0.01,
+        "log_loss": 0.04908,
+        "roc_auc": 0.7394,
+        "calibration_error": 0.00267
+      },
+      "concede": {
+        "events": 29859,
+        "positive_rate": 0.00238,
+        "brier": 0.00239,
+        "baseline_brier": 0.00237,
+        "brier_improvement_pct": -0.62,
+        "log_loss": 0.01689,
+        "roc_auc": 0.7214,
+        "calibration_error": 0.00115
+      }
+    },
     "score": {
-      "events": 32929,
-      "positive_rate": 0.01342,
-      "brier": 0.01201,
-      "baseline_brier": 0.01326,
-      "brier_improvement_pct": 9.45,
-      "log_loss": 0.06047,
-      "roc_auc": 0.7864,
-      "calibration_error": 0.0037
+      "events": 32487,
+      "positive_rate": 0.01016,
+      "brier": 0.00982,
+      "baseline_brier": 0.01006,
+      "brier_improvement_pct": 2.34,
+      "log_loss": 0.05225,
+      "roc_auc": 0.7552,
+      "calibration_error": 0.00234
     },
     "concede": {
-      "events": 32929,
-      "positive_rate": 0.00437,
-      "brier": 0.00434,
-      "baseline_brier": 0.00436,
-      "brier_improvement_pct": 0.59,
-      "log_loss": 0.02634,
-      "roc_auc": 0.8534,
-      "calibration_error": 0.00312
+      "events": 32487,
+      "positive_rate": 0.00222,
+      "brier": 0.00222,
+      "baseline_brier": 0.00221,
+      "brier_improvement_pct": -0.56,
+      "log_loss": 0.01454,
+      "roc_auc": 0.7846,
+      "calibration_error": 0.00089
     }
   },
   "xt": {
@@ -43,14 +68,15 @@ const modelReport = {
       12
     ],
     "nonzero_zones": 192,
-    "max_zone_value": 0.33679,
-    "test_actions_valued": 21954,
-    "mean_absolute_action_value": 0.00472
+    "max_zone_value": 0.31777,
+    "test_actions_valued": 21913,
+    "mean_absolute_action_value": 0.004
   },
   "notes": [
     "StatsBomb events train the event baselines; DFL tracking remains a separate evaluation source.",
-    "The held-out matches are never used to fit either probability model or the xT grid.",
-    "These are baseline validation metrics, not evidence that ZCPV is already superior."
+    "Validation and test matches are disjoint and never fit either probability model or the xT grid.",
+    "Penalty shootouts are excluded from ordinary-play modeling.",
+    "These are baseline validation metrics, not evidence that PIVOT is already superior."
   ]
 };
 export default modelReport;
