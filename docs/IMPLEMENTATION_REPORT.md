@@ -2,36 +2,73 @@
 
 ## Production path
 
-`python -m scripts.run_pivot` is the complete real-data entry point. It trains the World Cup event models, processes all seven DFL tracking matches, cross-fits the DFL fusion, evaluates held-out predictions, writes player-event and ranking artifacts, and regenerates the dashboard input. The dashboard imports only `app/pivot-rankings.generated.ts`; legacy and insufficient-data exports are not part of the UI.
+`python -m scripts.run_pivot` trains the World Cup event models, processes all seven DFL tracking matches, cross-fits DFL fusion, evaluates held-out predictions, writes player-event/ranking artifacts, and regenerates the dashboard input. The dashboard imports only `app/pivot-rankings.generated.ts` and shows separate outfield and goalkeeper rankings.
 
 ## Current computed data
 
 - 64 World Cup matches: 38 train, 13 validation, 13 test.
 - Seven DFL matches: 6,004 common actions, 5,604 live tracking alignments, and 5,480 complete next-10-action evaluation horizons.
 - Per-match alignment rates range from 88% to 98%.
-- 130 players qualify with at least 30 tracked minutes and 30 synchronized samples.
+- 120 players qualify with at least 45 tracked minutes.
 - Every production player-event contribution is leave-one-match-out cross-fitted.
+- Ratings are seven-match sample ratings, not estimates of season-long ability.
 
-## Held-out results
+## Tracking ablation
 
-On World Cup test data, scoring has Brier `0.00982` and ROC AUC `0.7552`; conceding has Brier `0.00222` and ROC AUC `0.7846`.
+All values below concatenate the seven held-out folds. Event-only is a DFL calibration of the frozen World Cup event probability; event plus control adds only actor-oriented pitch-control advantage.
 
-On concatenated held-out DFL folds, tracking fusion has scoring Brier `0.02172`, log loss `0.10561`, and ROC AUC `0.5941`, versus the raw transferred event model's `0.02199`, `0.12627`, and `0.6298`. Conceding fusion has Brier `0.00887`, log loss `0.05108`, and ROC AUC `0.5749`, versus `0.00891`, `0.06022`, and `0.6180`. Thus fusion improves calibration/probabilistic loss here but reduces discrimination; the implementation does not claim universal superiority.
+| Target | Model | Brier | Log loss | ROC AUC |
+| --- | --- | ---: | ---: | ---: |
+| Score | Constant | 0.021806 | 0.107584 | 0.3673 |
+| Score | Event only | **0.021703** | **0.105344** | **0.5993** |
+| Score | Event + control | 0.021716 | 0.105610 | 0.5941 |
+| Concede | Constant | 0.008875 | 0.051847 | 0.3128 |
+| Concede | Event only | **0.008858** | **0.050780** | 0.5675 |
+| Concede | Event + control | 0.008872 | 0.051076 | **0.5749** |
 
-The 14-observation team-match comparison is retained only as a small-sample diagnostic. The generated report contains its exact baseline correlations and warning.
+Adding control does not improve score prediction on any reported metric. For conceding it improves AUC but slightly worsens Brier and log loss. Therefore this sample does not support a general claim that tracking improves predictive performance.
 
-## Current top five
+## Fold-level control coefficients
 
-1. Kingsley Coman — 76.84
-2. D. Ginczek — 76.35
-3. Serge Gnabry — 74.75
-4. Leroy Sané — 72.65
-5. M. Diaby — 70.90
+These are coefficients in original pitch-control-advantage units; the generated report also stores standardized coefficients.
 
-All names, teams, minutes, events, tracking samples and ranking inputs are derived from the supplied real datasets. Synthetic fixtures are used only by unit/smoke tests.
+| Held-out match | Score coefficient | Concede coefficient |
+| --- | ---: | ---: |
+| J03WMX | +4.70 | -7.11 |
+| J03WN1 | +2.82 | -3.01 |
+| J03WOH | +4.80 | -9.79 |
+| J03WOY | +2.50 | -4.63 |
+| J03WPY | +2.68 | -5.19 |
+| J03WQQ | +2.64 | -4.72 |
+| J03WR9 | +1.42 | -3.73 |
 
-## Reproducibility and checks
+Signs are stable in all seven folds: more actor-oriented control raises scoring probability and lowers conceding probability. Magnitudes are only moderately stable: score mean `+3.08` (SD `1.14`, range `+1.42` to `+4.80`) and concede mean `-5.45` (SD `2.13`, range `-9.79` to `-3.01`). This supports directional spatial attribution, not a strong predictive-improvement claim.
 
-The real pipeline writes detailed ignored artifacts under `data/processed/pivot/`, including models, player-event contributions, evaluation, rankings and the complete report. The small generated TypeScript ranking payload is committed for Vercel.
+## Conservative exposure adjustment
 
-Software verification covers 24 Python tests, Python bytecode compilation, TypeScript type checking, focused application lint and a production web build.
+Raw PIVOT per 100 synchronized events remains in every ranking row. Rating reliability is now:
+
+```text
+effective matches = min(matches, minutes / 90)
+reliability       = effective matches / (effective matches + 4)
+```
+
+A full single match receives reliability `0.20`, even with 900 synchronized frames. Five full matches receive `0.556`. The rating uses the unshrunk raw-rate standard deviation as its fixed scale; otherwise standardizing after shrinkage would expand the compressed distribution and negate the adjustment.
+
+## Current outfield top five
+
+1. D. Ginczek — 55.32
+2. Serge Gnabry — 55.04
+3. Kingsley Coman — 54.66
+4. Leroy Sané — 54.62
+5. M. Diaby — 54.43
+
+## Current goalkeeper top five
+
+1. D. Stojanovic — 53.62
+2. M. Schwäbe — 53.36
+3. Y. Sommer — 52.11
+4. C. Mathenia — 50.97
+5. N. Vasilj — 49.71
+
+All ranking inputs are real. Synthetic fixtures are restricted to tests. Detailed ignored artifacts live under `data/processed/pivot/`; the generated TypeScript rankings are committed for Vercel.

@@ -3,6 +3,7 @@ from __future__ import annotations
 import numpy as np
 
 from zcpv.pitch_control import PitchControlConfig, leave_one_out_zone_values, pitch_control_counterfactuals
+from zcpv.pivot import exposure_reliability
 from zcpv.statsbomb import SBAction, event_model_values
 
 
@@ -52,3 +53,11 @@ def test_pitch_control_returns_full_and_matching_leave_one_out_surfaces():
     assert np.allclose(full.sum(axis=1), 1.0, atol=1e-6)
     assert np.all(losses >= 0)
     assert np.allclose(losses, legacy)
+
+
+def test_exposure_reliability_caps_correlated_frames_at_match_exposure():
+    effective, reliability = exposure_reliability(1, 90)
+    assert effective == 1.0
+    assert reliability == 0.2
+    assert exposure_reliability(1, 45) == (0.5, 0.5 / 4.5)
+    assert exposure_reliability(5, 500) == (5.0, 5.0 / 9.0)

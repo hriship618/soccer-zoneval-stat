@@ -37,7 +37,7 @@ Two logistic fusion models are fitted on six DFL matches at a time from the Worl
 C_i,e = 1[i performed e] * EV_e + SCF_i,e.
 ```
 
-Displayed match contributions are always produced by the fold that held that match out. Player totals are divided by active synchronized event samples, expressed per 100 events, and shrunk toward the exposure-weighted population mean with reliability `N/(N+100)`. PIVOT is a 50/10 standardized rating; goalkeeper and outfield reference distributions are separate because their removal effects are structurally different. Players need at least 30 tracked minutes and 30 aligned samples.
+Displayed match contributions are always produced by the fold that held that match out. The raw PIVOT rate remains contribution per 100 active event samples, but reliability does not treat those correlated frames as independent. Define `effective_matches = min(matches, minutes/90)` and `reliability = effective_matches/(effective_matches+4)`. A full single match therefore has reliability `0.20` regardless of frame count; five full matches reach only `0.556`. The rating uses the unshrunk group spread as its fixed scale so post-shrink standardization cannot restore discarded variance. Goalkeepers and outfield players have separate reference distributions and rankings. Qualification requires at least 45 tracked minutes.
 
 ## Event model
 
@@ -56,7 +56,7 @@ npm install
 npm run dev
 ```
 
-The UI is intentionally a compact numerical ranking table: rank, player, team, minutes, synchronized sample count and PIVOT rating. It contains no placeholder cards, synthetic ratings or generated methodology prose.
+The UI contains separate compact outfield and goalkeeper tables showing only rank, player, team, matches, minutes and PIVOT rating. It contains no placeholder cards, synthetic ratings or generated methodology prose.
 
 ## Validation and limitations
 
@@ -69,7 +69,7 @@ npx tsc --noEmit
 npm run build
 ```
 
-Seven DFL matches are enough to demonstrate a leakage-safe, real-data end-to-end estimator, but not enough for a season-quality talent claim. World Cup-to-Bundesliga transfer can have competition/provider shift; pitch-control physics are assumptions; DFL outcomes are sparse; and the standardized rating is local to this player pool. The generated `pivot-report.json` records exact held-out metrics and does not claim tracking improves every metric when it does not.
+Seven DFL matches are enough to demonstrate a leakage-safe, real-data end-to-end estimator, but not enough for a season-quality talent claim. World Cup-to-Bundesliga transfer can have competition/provider shift; pitch-control physics are assumptions; DFL outcomes are sparse; and the standardized rating is local to this player pool. The held-out ablation does not show a consistent predictive improvement from adding pitch control, so PIVOT treats it as attribution evidence rather than claiming superior prediction. Exact metrics and every fold coefficient are recorded in `pivot-report.json`.
 
 ## Data attribution
 

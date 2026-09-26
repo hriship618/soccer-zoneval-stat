@@ -26,6 +26,8 @@ h1 { margin: 0; font-size: clamp(34px, 5vw, 56px); font-weight: 750; letter-spac
 .dataset { color: var(--muted); font-size: 13px; white-space: nowrap; }
 .dataset b { color: var(--ink); font-variant-numeric: tabular-nums; }
 
+.ranking-section + .ranking-section { margin-top: 36px; }
+.ranking-section h2 { margin: 0 0 10px; font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
 .table-wrap { overflow: hidden; border: 1px solid var(--line); background: var(--white); }
 table { width: 100%; border-collapse: collapse; }
 th, td { border-bottom: 1px solid var(--line); padding: 13px 16px; text-align: left; }
@@ -46,6 +48,6 @@ tbody tr:hover { background: #fafbf9; }
   .masthead { align-items: start; padding: 0 16px; }
   .dataset { padding-top: 4px; }
   th, td { padding: 12px 10px; }
-  th:nth-child(3), td:nth-child(3), th:nth-child(5), td:nth-child(5) { display: none; }
+  th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4) { display: none; }
   .rank { width: 44px; }
 }

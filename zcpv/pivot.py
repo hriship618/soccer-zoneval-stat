@@ -276,16 +276,25 @@ def _logit(probability: np.ndarray) -> np.ndarray:
     return np.log(clipped / (1 - clipped))
 
 
-def _fusion_features(events: list[DFLEventState], target: str, advantages: np.ndarray | None = None) -> np.ndarray:
+def _fusion_features(
+    events: list[DFLEventState],
+    target: str,
+    advantages: np.ndarray | None = None,
+    *,
+    include_control: bool = True,
+) -> np.ndarray:
     probabilities = np.asarray([
         event.score_probability if target == "score" else event.concede_probability
         for event in events
     ])
+    event_logit = _logit(probabilities).reshape(-1, 1)
+    if not include_control:
+        return event_logit
     control = np.asarray([event.control_advantage for event in events]) if advantages is None else advantages
-    return np.column_stack((_logit(probabilities), control))
+    return np.column_stack((event_logit[:, 0], control))
 
 
-def fit_fusion(events: list[DFLEventState], target: str):
+def fit_fusion(events: list[DFLEventState], target: str, *, include_control: bool = True):
     label_name = f"{target}_label"
     eligible = [event for event in events if getattr(event, label_name) is not None]
     labels = np.asarray([getattr(event, label_name) for event in eligible], dtype=np.int8)
@@ -295,7 +304,20 @@ def fit_fusion(events: list[DFLEventState], target: str):
         StandardScaler(),
         LogisticRegression(C=0.35, max_iter=1_000, random_state=42),
     )
-    return model.fit(_fusion_features(eligible, target), labels)
+    return model.fit(_fusion_features(eligible, target, include_control=include_control), labels)
+
+
+def _control_coefficient(model) -> dict[str, float | str]:
+    """Expose the control coefficient on standardized and original scales."""
+    scaler = model.named_steps["standardscaler"]
+    estimator = model.named_steps["logisticregression"]
+    standardized = float(estimator.coef_[0, 1])
+    original = standardized / float(scaler.scale_[1])
+    return {
+        "standardized": standardized,
+        "original_control_units": original,
+        "sign": "positive" if original > 0 else "negative" if original < 0 else "zero",
+    }
 
 
 def _safe_metrics(labels: np.ndarray, probabilities: np.ndarray) -> dict[str, float | int | None]:
@@ -320,6 +342,19 @@ def _pearson(x: list[float], y: list[float]) -> float | None:
     return float(np.corrcoef(x, y)[0, 1])
 
 
+def exposure_reliability(matches: int, minutes: float, prior_matches: float = 4.0) -> tuple[float, float]:
+    """Conservative reliability from match-equivalent exposure.
+
+    Correlated frames within a match cannot make that match worth more than one
+    independent exposure. Partial matches count in proportion to 90 minutes,
+    and a four-match prior keeps one-match estimates strongly shrunk.
+    """
+    if matches < 0 or minutes < 0 or prior_matches <= 0:
+        raise ValueError("matches/minutes must be non-negative and prior_matches positive")
+    effective_matches = min(float(matches), minutes / 90.0)
+    return effective_matches, effective_matches / (effective_matches + prior_matches)
+
+
 def leave_one_match_out(matches: list[DFLMatchResult]) -> tuple[list[dict], dict, dict]:
     """Cross-fit fusion and return leakage-safe player-event contributions."""
     contributions: list[dict] = []
@@ -327,11 +362,19 @@ def leave_one_match_out(matches: list[DFLMatchResult]) -> tuple[list[dict], dict
     fold_details = []
     for held_match in matches:
         train_events = [event for match in matches if match.match_id != held_match.match_id for event in match.events]
-        score_model = fit_fusion(train_events, "score")
-        concede_model = fit_fusion(train_events, "concede")
+        score_model = fit_fusion(train_events, "score", include_control=True)
+        concede_model = fit_fusion(train_events, "concede", include_control=True)
+        score_event_only = fit_fusion(train_events, "score", include_control=False)
+        concede_event_only = fit_fusion(train_events, "concede", include_control=False)
         held_events = held_match.events
         score_full = score_model.predict_proba(_fusion_features(held_events, "score"))[:, 1]
         concede_full = concede_model.predict_proba(_fusion_features(held_events, "concede"))[:, 1]
+        score_event = score_event_only.predict_proba(
+            _fusion_features(held_events, "score", include_control=False)
+        )[:, 1]
+        concede_event = concede_event_only.predict_proba(
+            _fusion_features(held_events, "concede", include_control=False)
+        )[:, 1]
         train_labeled = [event for event in train_events if event.score_label is not None]
         score_prevalence = float(np.mean([event.score_label for event in train_labeled]))
         concede_prevalence = float(np.mean([event.concede_label for event in train_labeled]))
@@ -340,6 +383,10 @@ def leave_one_match_out(matches: list[DFLMatchResult]) -> tuple[list[dict], dict
             "training_matches": len(matches) - 1,
             "training_events": len(train_labeled),
             "held_out_events": sum(event.score_label is not None for event in held_events),
+            "control_coefficients": {
+                "score": _control_coefficient(score_model),
+                "concede": _control_coefficient(concede_model),
+            },
         })
         for event_index, event in enumerate(held_events):
             if event.score_label is not None:
@@ -349,8 +396,8 @@ def leave_one_match_out(matches: list[DFLMatchResult]) -> tuple[list[dict], dict
                     "concede_label": event.concede_label,
                     "pivot_score": float(score_full[event_index]),
                     "pivot_concede": float(concede_full[event_index]),
-                    "event_score": event.score_probability,
-                    "event_concede": event.concede_probability,
+                    "event_score": float(score_event[event_index]),
+                    "event_concede": float(concede_event[event_index]),
                     "constant_score": score_prevalence,
                     "constant_concede": concede_prevalence,
                 })
@@ -386,24 +433,40 @@ def leave_one_match_out(matches: list[DFLMatchResult]) -> tuple[list[dict], dict
 
     labels_score = np.asarray([row["score_label"] for row in evaluation_rows])
     labels_concede = np.asarray([row["concede_label"] for row in evaluation_rows])
+    coefficient_stability = {}
+    for target in ("score", "concede"):
+        values = np.asarray([
+            fold["control_coefficients"][target]["original_control_units"]
+            for fold in fold_details
+        ])
+        coefficient_stability[target] = {
+            "positive_folds": int((values > 0).sum()),
+            "negative_folds": int((values < 0).sum()),
+            "mean": float(values.mean()),
+            "standard_deviation": float(values.std()),
+            "minimum": float(values.min()),
+            "maximum": float(values.max()),
+            "stable_sign": bool((values > 0).all() or (values < 0).all()),
+        }
     evaluation = {
         "strategy": "leave-one-match-out cross-fitting across all seven DFL matches",
         "folds": fold_details,
+        "control_coefficient_stability": coefficient_stability,
         "score": {
             "constant": _safe_metrics(labels_score, np.asarray([row["constant_score"] for row in evaluation_rows])),
-            "world_cup_event_model": _safe_metrics(labels_score, np.asarray([row["event_score"] for row in evaluation_rows])),
-            "pivot_tracking_fusion": _safe_metrics(labels_score, np.asarray([row["pivot_score"] for row in evaluation_rows])),
+            "event_model_alone": _safe_metrics(labels_score, np.asarray([row["event_score"] for row in evaluation_rows])),
+            "event_plus_pitch_control": _safe_metrics(labels_score, np.asarray([row["pivot_score"] for row in evaluation_rows])),
         },
         "concede": {
             "constant": _safe_metrics(labels_concede, np.asarray([row["constant_concede"] for row in evaluation_rows])),
-            "world_cup_event_model": _safe_metrics(labels_concede, np.asarray([row["event_concede"] for row in evaluation_rows])),
-            "pivot_tracking_fusion": _safe_metrics(labels_concede, np.asarray([row["pivot_concede"] for row in evaluation_rows])),
+            "event_model_alone": _safe_metrics(labels_concede, np.asarray([row["event_concede"] for row in evaluation_rows])),
+            "event_plus_pitch_control": _safe_metrics(labels_concede, np.asarray([row["pivot_concede"] for row in evaluation_rows])),
         },
     }
     return contributions, evaluation, {"folds": fold_details}
 
 
-def aggregate_rankings(matches: list[DFLMatchResult], contributions: list[dict]) -> tuple[list[dict], dict]:
+def aggregate_rankings(matches: list[DFLMatchResult], contributions: list[dict]) -> tuple[dict[str, list[dict]], dict]:
     player_meta: dict[str, dict] = {}
     minutes: dict[str, float] = defaultdict(float)
     match_counts: dict[str, set[str]] = defaultdict(set)
@@ -425,7 +488,7 @@ def aggregate_rankings(matches: list[DFLMatchResult], contributions: list[dict])
 
     eligible_ids = [
         player_id for player_id, values in totals.items()
-        if minutes[player_id] >= 30 and values["samples"] >= 30
+        if minutes[player_id] >= 45 and len(match_counts[player_id]) >= 1 and values["samples"] > 0
     ]
     rating_group = {
         player_id: "goalkeeper" if player_meta[player_id]["role"] == "TW" else "outfield"
@@ -438,20 +501,31 @@ def aggregate_rankings(matches: list[DFLMatchResult], contributions: list[dict])
         total_contribution = sum(totals[player_id]["pivot_contribution"] for player_id in members)
         total_samples = sum(totals[player_id]["samples"] for player_id in members)
         global_per_100 = 100 * total_contribution / max(1, total_samples)
+        raw_rates = {
+            player_id: 100 * totals[player_id]["pivot_contribution"] / totals[player_id]["samples"]
+            for player_id in members
+        }
         for player_id in members:
-            sample_count = totals[player_id]["samples"]
-            raw_rate = 100 * totals[player_id]["pivot_contribution"] / sample_count
-            reliability = sample_count / (sample_count + 100.0)
-            shrunk[player_id] = reliability * raw_rate + (1 - reliability) * global_per_100
-        center = float(np.mean([shrunk[player_id] for player_id in members])) if members else 0.0
-        scale = float(np.std([shrunk[player_id] for player_id in members])) if len(members) > 1 else 1.0
-        group_reference[group] = {"center": center, "scale": max(scale, 1e-12), "prior": global_per_100}
+            matches_played = len(match_counts[player_id])
+            effective_matches, reliability = exposure_reliability(matches_played, minutes[player_id])
+            shrunk[player_id] = reliability * raw_rates[player_id] + (1 - reliability) * global_per_100
+        # Keep the reference scale fixed to the raw-rate pool. Standardizing on
+        # the shrunken distribution would expand its compressed variance and
+        # undo the uncertainty adjustment in the displayed rating.
+        raw_scale = float(np.std(list(raw_rates.values()))) if len(raw_rates) > 1 else 1.0
+        group_reference[group] = {
+            "center": global_per_100,
+            "scale": max(raw_scale, 1e-12),
+            "prior": global_per_100,
+        }
     rankings = []
     for player_id in eligible_ids:
         values = totals[player_id]
         meta = player_meta[player_id]
         player_minutes = minutes[player_id]
         sample_count = int(values["samples"])
+        matches_played = len(match_counts[player_id])
+        effective_matches, reliability = exposure_reliability(matches_played, player_minutes)
         reference = group_reference[rating_group[player_id]]
         rating = float(np.clip(50 + 10 * (shrunk[player_id] - reference["center"]) / reference["scale"], 0, 100))
         rankings.append({
@@ -459,21 +533,27 @@ def aggregate_rankings(matches: list[DFLMatchResult], contributions: list[dict])
             "name": meta["name"],
             "team": meta["team"],
             "role": meta["role"],
-            "matches": len(match_counts[player_id]),
+            "matches": matches_played,
             "minutes": round(player_minutes, 1),
             "event_samples": sample_count,
             "pivot_rating": round(rating, 2),
             "rating_group": rating_group[player_id],
-            "pivot_per_100_events": round(100 * values["pivot_contribution"] / sample_count, 5),
+            "raw_pivot_per_100": round(100 * values["pivot_contribution"] / sample_count, 5),
             "shrunk_pivot_per_100": round(shrunk[player_id], 5),
             "event_value_per_90": round(90 * values["event_value"] / max(player_minutes, 1), 5),
             "spatial_value_per_100_events": round(100 * values["spatial_counterfactual"] / sample_count, 5),
             "xt_per_90": round(90 * values["xt_value"] / max(player_minutes, 1), 5),
-            "reliability": round(sample_count / (sample_count + 100.0), 4),
+            "effective_matches": round(effective_matches, 4),
+            "reliability": round(reliability, 4),
         })
-    rankings.sort(key=lambda row: (-row["pivot_rating"], -row["minutes"], row["name"]))
-    for rank, row in enumerate(rankings, 1):
-        row["rank"] = rank
+    rankings_by_group = {
+        "outfield": [row for row in rankings if row["rating_group"] == "outfield"],
+        "goalkeepers": [row for row in rankings if row["rating_group"] == "goalkeeper"],
+    }
+    for group in rankings_by_group.values():
+        group.sort(key=lambda row: (-row["pivot_rating"], -row["minutes"], row["name"]))
+        for rank, row in enumerate(group, 1):
+            row["rank"] = rank
 
     goals_by_match_team: dict[tuple[str, int], int] = defaultdict(int)
     for match in matches:
@@ -509,4 +589,4 @@ def aggregate_rankings(matches: list[DFLMatchResult], contributions: list[dict])
         },
         "warning": "Descriptive only: seven matches and 14 paired team observations are too small for strong comparative claims.",
     }
-    return rankings, baseline_evaluation
+    return rankings_by_group, baseline_evaluation

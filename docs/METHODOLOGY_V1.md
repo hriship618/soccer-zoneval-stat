@@ -33,12 +33,21 @@ For player `i`, remove their pitch-control mass and recompute the fused net prob
 C_i,e = 1[i is the actor] EV_e + SCF_i,e.
 ```
 
-Aggregate all held-out player-event contributions, divide by active synchronized event samples and express the rate per 100 samples. Empirical-Bayes shrinkage uses reliability `N_i/(N_i+100)`. The display rating is `50 + 10z`, standardized separately for goalkeepers and outfield players because their removal distributions are structurally different. Qualification requires 30 tracked minutes and 30 event samples.
+Aggregate all held-out player-event contributions, divide by active synchronized event samples and retain that raw rate per 100 samples. Frames within one match are strongly correlated and therefore do not determine uncertainty. Instead:
+
+```text
+effective_matches_i = min(matches_i, minutes_i / 90)
+reliability_i       = effective_matches_i / (effective_matches_i + 4)
+shrunk_rate_i       = reliability_i * raw_rate_i
+                    + (1 - reliability_i) * group_prior
+```
+
+The four-match prior is deliberately conservative for a seven-match dataset. A full one-match player has reliability `0.20`, a 45-minute player has `0.111`, and five full matches have `0.556`, regardless of synchronized frame count. The display rating is `50 + 10 * (shrunk_rate - group_prior) / SD(raw group rates)`. Using the unshrunk standard deviation is essential: re-standardizing on the compressed post-shrink distribution would undo the uncertainty adjustment. Goalkeepers and outfield players have separate priors, scales and ranking tables. Qualification requires at least 45 tracked minutes.
 
 ## Evaluation
 
-The World Cup test partition reports Brier score, log loss, ROC AUC and calibration error. DFL evaluation concatenates predictions from the seven held-out folds and compares constant, transferred World Cup and tracking-fusion probabilities. A secondary 14 team-match diagnostic compares raw event totals, minutes-adjusted event value, transferred xT and PIVOT against goal difference; it is explicitly descriptive because the sample is very small.
+The World Cup test partition reports Brier score, log loss, ROC AUC and calibration error. DFL evaluation concatenates predictions from the seven held-out folds. Each fold fits a constant baseline, an event-only DFL calibration of the frozen World Cup probability, and the same calibration plus pitch-control advantage. This is a direct tracking ablation: every alternative uses identical held-out matches and labels. Both standardized and original-unit control coefficients are recorded per fold, along with sign-stability summaries. A secondary 14 team-match diagnostic is explicitly descriptive because the sample is very small.
 
 ## Scope
 
-These are real, reproducible rankings for the supplied matches, not season-long talent estimates or causal effects. Important limitations are event-model domain shift, sparse DFL goal labels, pitch-control assumptions, dependence among matches, and a rating scale local to this player pool. Exact results are written to `data/processed/pivot/pivot-report.json` on every run.
+These are real, reproducible **seven-match sample ratings**, not estimates of season-long player ability or causal effects. Important limitations are event-model domain shift, sparse DFL goal labels, pitch-control assumptions, dependence among matches, and a rating scale local to this player pool. Exact results are written to `data/processed/pivot/pivot-report.json` on every run.
