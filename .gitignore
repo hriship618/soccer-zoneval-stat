@@ -10,5 +10,5 @@ __pycache__/
 *.egg-info/
 *.tsbuildinfo
 benchmark-results.json
-data/raw/
-data/processed/
+models/data/raw/
+models/data/processed/

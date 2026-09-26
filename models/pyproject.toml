@@ -12,9 +12,6 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 include = ["zcpv*"]
 
-[tool.setuptools.package-data]
-zcpv = ["cuda/*.cu"]
-
 [project.optional-dependencies]
 cuda = ["cupy-cuda12x>=13.0"]
 dev = ["pytest>=8.0"]

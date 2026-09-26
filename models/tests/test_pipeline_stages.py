@@ -1,7 +1,7 @@
 from dataclasses import replace
 import json
 
-from scripts.train_zcpv import profiles_stage, state_stage
+from models.scripts.train_zcpv import profiles_stage, state_stage
 from zcpv.config import ZCPVConfig
 
 

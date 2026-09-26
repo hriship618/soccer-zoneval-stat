@@ -24,7 +24,7 @@ def leave_one_out_cuda(positions: np.ndarray, velocities: np.ndarray, teams: np.
         raise CudaUnavailable("install the 'cuda' extra and use a CUDA-capable host") from exc
     if not is_available():
         raise CudaUnavailable("no CUDA device is available")
-    source = (Path(__file__).with_name("cuda") / "pitch_control.cu").read_text(encoding="utf-8")
+    source = Path(__file__).with_name("pitch_control.cu").read_text(encoding="utf-8")
     kernel = cp.RawKernel(source, "zcpv_leave_one_out", options=("--std=c++14",))
     pos = cp.asarray(positions, dtype=cp.float32)
     vel = cp.asarray(velocities, dtype=cp.float32)

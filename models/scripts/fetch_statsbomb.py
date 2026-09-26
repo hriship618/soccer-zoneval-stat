@@ -7,6 +7,8 @@ from urllib.request import Request, urlopen
 
 
 RAW_ROOT = "https://raw.githubusercontent.com/hudl/open-data/master/data"
+REPO_ROOT = Path(__file__).resolve().parents[2]
+DATA_ROOT = REPO_ROOT / "models" / "data"
 
 
 def download_json(url: str):
@@ -24,7 +26,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Download an official StatsBomb Open Data competition.")
     parser.add_argument("--competition", type=int, default=43, help="StatsBomb competition id")
     parser.add_argument("--season", type=int, default=106, help="StatsBomb season id")
-    parser.add_argument("--output", type=Path, default=Path("data/raw/statsbomb"))
+    parser.add_argument("--output", type=Path, default=DATA_ROOT / "raw" / "statsbomb")
     args = parser.parse_args()
 
     competition_url = f"{RAW_ROOT}/matches/{args.competition}/{args.season}.json"

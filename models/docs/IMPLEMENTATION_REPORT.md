@@ -2,7 +2,7 @@
 
 ## Production path
 
-`python -m scripts.run_pivot` trains the World Cup event models, processes all seven DFL tracking matches, cross-fits DFL fusion, evaluates held-out predictions, writes player-event/ranking artifacts, and regenerates the dashboard input. The dashboard imports only `app/pivot-rankings.generated.ts` and shows separate outfield and goalkeeper rankings.
+`python -m models.scripts.run_pivot` trains the World Cup event models, processes all seven DFL tracking matches, cross-fits DFL fusion, evaluates held-out predictions, writes player-event/ranking artifacts, and regenerates the dashboard input. The dashboard imports only `frontend/app/pivot-rankings.generated.ts` and shows separate outfield and goalkeeper rankings.
 
 ## Current computed data
 
@@ -71,4 +71,4 @@ A full single match receives reliability `0.20`, even with 900 synchronized fram
 4. C. Mathenia — 50.97
 5. N. Vasilj — 49.71
 
-All ranking inputs are real. Synthetic fixtures are restricted to tests. Detailed ignored artifacts live under `data/processed/pivot/`; the generated TypeScript rankings are committed for Vercel.
+All ranking inputs are real. Synthetic fixtures are restricted to tests. Detailed ignored artifacts live under `models/data/processed/pivot/`; the generated TypeScript rankings are committed for Vercel.

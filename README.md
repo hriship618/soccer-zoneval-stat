@@ -5,8 +5,8 @@ PIVOT is a real-data soccer player rating that combines a transferable event-val
 ## One-command pipeline
 
 ```bash
-python -m pip install -e .
-python -m scripts.run_pivot
+python -m pip install -e ./models
+python -m models.scripts.run_pivot
 ```
 
 That command:
@@ -17,10 +17,19 @@ That command:
 4. aligns those actions to real DFL tracking frames and computes 32 × 21 pitch control plus every active player's leave-one-out counterfactual;
 5. cross-fits the event/tracking fusion over seven leave-one-match-out DFL folds;
 6. evaluates the held-out probabilities and simple player/team baselines;
-7. writes real player-event contributions and final rankings under `data/processed/pivot/`;
-8. regenerates `app/pivot-rankings.generated.ts`, the dashboard's only rating source.
+7. writes real player-event contributions and final rankings under `models/data/processed/pivot/`;
+8. regenerates `frontend/app/pivot-rankings.generated.ts`, the dashboard's only rating source.
 
-Raw data is expected under `data/raw/statsbomb/` and `data/raw/dfl/`. Both raw and large processed artifacts are ignored by Git.
+Raw data is expected under `models/data/raw/statsbomb/` and `models/data/raw/dfl/`. Both raw and large processed artifacts are ignored by Git.
+
+## Repository layout
+
+```text
+frontend/  Web application and generated ranking source
+backend/   Reserved for the future model-serving API
+models/    Python package, data, configuration, scripts, tests, and research docs
+cuda/      CuPy adapter and CUDA pitch-control kernel
+```
 
 ## Mathematical definition
 
@@ -52,6 +61,7 @@ DFL tracking supplies position and velocity at the event time. PIVOT computes re
 ## Dashboard
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
@@ -63,8 +73,9 @@ The UI contains separate compact outfield and goalkeeper tables showing only ran
 Run software checks with:
 
 ```bash
-python -m pytest -q
-python -m compileall -q zcpv scripts
+python -m pytest -q models/tests
+python -m compileall -q models/zcpv models/scripts cuda
+cd frontend
 npx tsc --noEmit
 npm run build
 ```

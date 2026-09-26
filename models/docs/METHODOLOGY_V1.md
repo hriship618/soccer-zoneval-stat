@@ -1,6 +1,6 @@
 # PIVOT real-data methodology
 
-The production estimator is implemented by `python -m scripts.run_pivot`. It keeps event-only World Cup data and DFL tracking data separate until inference in their genuinely shared action space.
+The production estimator is implemented by `python -m models.scripts.run_pivot`. It keeps event-only World Cup data and DFL tracking data separate until inference in their genuinely shared action space.
 
 ## World Cup event model
 
@@ -50,4 +50,4 @@ The World Cup test partition reports Brier score, log loss, ROC AUC and calibrat
 
 ## Scope
 
-These are real, reproducible **seven-match sample ratings**, not estimates of season-long player ability or causal effects. Important limitations are event-model domain shift, sparse DFL goal labels, pitch-control assumptions, dependence among matches, and a rating scale local to this player pool. Exact results are written to `data/processed/pivot/pivot-report.json` on every run.
+These are real, reproducible **seven-match sample ratings**, not estimates of season-long player ability or causal effects. Important limitations are event-model domain shift, sparse DFL goal labels, pitch-control assumptions, dependence among matches, and a rating scale local to this player pool. Exact results are written to `models/data/processed/pivot/pivot-report.json` on every run.
